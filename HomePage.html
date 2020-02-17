@@ -11,56 +11,33 @@
 
 
 <script language="JavaScript">
-function Count() {
-
-	var count=0
-
-	if (document.Quoter.chkBut1.checked){
-		count=count + 1}
-
-	if (document.Quoter.chkBut2.checked){
-		count=count + 1}
-
-	if (document.Quoter.chkBut3.checked){
-		count=count + 1}
-
-	if (document.Quoter.chkBut4.checked){
-		count=count + 1}
-
-	if (document.Quoter.chkBut5.checked){
-		count=count + 1}
-
-	if (count == 3){
-		alert('You can only select up to two items.')
-		document.Quoter; return false;
-	}
-}
-</script>
-
-<script language="JavaScript">
 function userSubmit() {	
 	//Design by Steve Richardville of Summit CPA Group
 	
 	//Check for form completion, cancel if false
+	/*
 	if(!validateForm()){
 		return false;
 	} 
+	*/
 	
 	//Declare variables
-    var fname = document.getElementById('Fname');
-    var lname = document.getElementById('Lname');
-	var email = document.getElementById('Email');
-	var phone = document.getElementById('Phone');
-	var org = document.getElementById('organization');
-	var title = document.getElementById('title');
-	var address1 = document.getElementById('address1');
-	var address2 = document.getElementById('address2');
-	var city = document.getElementById('city');
-	var state = document.getElementById('state');
-	var zip = document.getElementById('zip');
-	var country = document.getElementById('country');
+    var fname = document.getElementById('Fname').value;
+    var lname = document.getElementById('Lname').value;
+	var email = document.getElementById('Email').value;
+	var phone = document.getElementById('Phone').value;
+	var org = document.getElementById('organization').value;
+	var title = document.getElementById('title').value;
+	var address1 = document.getElementById('address1').value;
+	var address2 = document.getElementById('address2').value;
+	var city = document.getElementById('city').value;
+	var state = document.getElementById('state').value;
+	var zip = document.getElementById('zip').value;
+	var country = document.getElementById('country').value;
 	
 	var errMsg="";
+	
+	/*
 	
 	//Check email format
     if(email.value.length > 0) {
@@ -84,7 +61,7 @@ function userSubmit() {
 		}
     }	
 	
-	
+	*/
 	alert('Success!');
 }
 </script>
@@ -93,7 +70,7 @@ function userSubmit() {
 function resetform() {
 	document.getElementById("Quoter").reset();
 	document.documentElement.scrollTop = 0;
-	}
+}
 </script>
 
 <script language="JavaScript">
@@ -109,12 +86,601 @@ function validateForm() {
 		fieldmsg = fieldnames[i];
 		if (document.forms["Quoter"][fieldtype].value === "") {
 			alert("Please enter information in the required fields.");
-			document.Quoter; return false;
+			document.Quoter;
 		}
 	}
   return true;
 }
 </script>
+
+<script>
+function updateCosts() {
+	
+	//Determine Revenue Range and set scale factors
+	var annualRev = document.getElementById('AnnualRev').value;
+	var EmpCounter = document.getElementById('EmpCount').value;
+	var TaxRate = 0;
+	var CoreScale = 0;
+	var AddOnsScale = 0;
+	var RevRng0 = 0;
+	var RevRng1 = 100000;
+	var RevRng2 = 300000;
+	var RevRng3 = 600000;
+	var RevRng4 = 900000;
+	var RevRng5 = 1200000;
+	var RevRng6 = 1500000;
+	var RevRng7 = 1800000;
+	var RevRng8 = 2100000;
+	var RevRng9 = 2500000;
+	var RevRng10 = 3000000;
+	var RevRng11 = 3500000;
+	var RevRng12 = 4000000;
+	var RevRng13 = 4500000;
+	var RevRng14 = 5000000;
+	var RevRng15 = 6000000;
+	var RevRng16 = 7000000;
+	var RevRng17 = 8000000;
+	var RevRng18 = 9000000;
+	var RevRng19 = 10000000;
+	var RevRng20 = 12500000;
+	var RevRng21 = 15000000;
+	var RevRng22 = 17500000;
+	var RevRng23 = 20000000;
+	var RevRng24 = 22500000;
+	var RevRng25 = 25000000;
+	var RevRng26 = 27500000;
+	var RevRng27 = 30000000;
+	var RevRng28 = 32500000;
+	var RevRng29 = 35000000;
+	var RevRng30 = 37500000;
+	var RevRng31 = 40000000;
+	var RevRng32 = 42500000;
+	var RevRng33 = 45000000;
+	var RevRng34 = 47500000;
+	var RevRng35 = 50000000;
+	
+		
+	if (annualRev >= RevRng0 && annualRev < RevRng1) {
+		TaxRate = 600;
+		CoreScale = -Math.abs(-0.25);
+		AddOnsScale = -Math.abs(-0.25);
+	} else if (annualRev >= RevRng1 && annualRev < RevRng2) {
+		TaxRate = 600;
+		CoreScale = -Math.abs(-0.25);
+		AddOnsScale = -Math.abs(-0.25);
+	} else if (annualRev >= RevRng2 && annualRev < RevRng3) {
+		TaxRate = 900;
+		CoreScale = -Math.abs(-0.25);
+		AddOnsScale = -Math.abs(-0.25);
+	} else if (annualRev >= RevRng3 && annualRev < RevRng4) {
+		TaxRate = 1200;
+		CoreScale = -Math.abs(-0.25);
+		AddOnsScale = -Math.abs(-0.25);
+	} else if (annualRev >= RevRng4 && annualRev < RevRng5) {
+		TaxRate = 1800;
+		CoreScale = -Math.abs(-0.20);
+		AddOnsScale = -Math.abs(-0.20);
+	} else if (annualRev >= RevRng5 && annualRev < RevRng6) {
+		TaxRate = 2200;
+		CoreScale = -Math.abs(-0.05);
+		AddOnsScale = -Math.abs(-0.05);
+	} else if (annualRev >= RevRng6 && annualRev < RevRng7) {
+		TaxRate = 2600;
+		CoreScale = -Math.abs(-0.05);
+		AddOnsScale = -Math.abs(-0.05);
+	} else if (annualRev >= RevRng7 && annualRev < RevRng8) {
+		TaxRate = 2900;
+		CoreScale = -Math.abs(-0.05);
+		AddOnsScale = -Math.abs(-0.05);
+	} else if (annualRev >= RevRng8 && annualRev < RevRng9) {
+		TaxRate = 3200;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng9 && annualRev < RevRng10) {
+		TaxRate = 3500;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng10 && annualRev < RevRng11) {
+		TaxRate = 3800;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng11 && annualRev < RevRng12) {
+		TaxRate = 4100;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng12 && annualRev < RevRng13) {
+		TaxRate = 4400;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng13 && annualRev < RevRng14) {
+		TaxRate = 4700;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng14 && annualRev < RevRng15) {
+		TaxRate = 5000;
+		CoreScale = 0;
+		AddOnsScale = 0;
+	} else if (annualRev >= RevRng15 && annualRev < RevRng16) {
+		TaxRate = 5500;
+		CoreScale = 0.05;
+		AddOnsScale = 0.05;
+	} else if (annualRev >= RevRng16 && annualRev < RevRng17) {
+		TaxRate = 6000;
+		CoreScale = 0.05;
+		AddOnsScale = 0.05;
+	} else if (annualRev >= RevRng17 && annualRev < RevRng18) {
+		TaxRate = 6500;
+		CoreScale = 0.10;
+		AddOnsScale = 0.10;
+	} else if (annualRev >= RevRng18 && annualRev < RevRng19) {
+		TaxRate = 7000;
+		CoreScale = 0.10;
+		AddOnsScale = 0.10;
+	} else if (annualRev >= RevRng19 && annualRev < RevRng20) {
+		TaxRate = 7500;
+		CoreScale = 0.15;
+		AddOnsScale = 0.15;
+	} else if (annualRev >= RevRng20 && annualRev < RevRng21) {
+		TaxRate = 8700;
+		CoreScale = 0.15;
+		AddOnsScale = 0.15;
+	} else if (annualRev >= RevRng21 && annualRev < RevRng22) {
+		TaxRate = 9900;
+		CoreScale = 0.15;
+		AddOnsScale = 0.15;
+	} else if (annualRev >= RevRng22 && annualRev < RevRng23) {
+		TaxRate = 11100;
+		CoreScale = 0.15;
+		AddOnsScale = 0.15;
+	} else if (annualRev >= RevRng23 && annualRev < RevRng24) {
+		TaxRate = 12300;
+		CoreScale = 0.20;
+		AddOnsScale = 0.25;
+	} else if (annualRev >= RevRng24 && annualRev < RevRng25) {
+		TaxRate = 13500;
+		CoreScale = 0.20;
+		AddOnsScale = 0.50;
+	} else if (annualRev >= RevRng25 && annualRev < RevRng26) {
+		TaxRate = 14700;
+		CoreScale = 0.25;
+		AddOnsScale = 0.75;
+	} else if (annualRev >= RevRng26 && annualRev < RevRng27) {
+		TaxRate = 15900;
+		CoreScale = 0.25;
+		AddOnsScale = 1.00;
+	} else if (annualRev >= RevRng27 && annualRev < RevRng28) {
+		TaxRate = 17100;
+		CoreScale = 0.25;
+		AddOnsScale = 1.25;
+	} else if (annualRev >= RevRng28 && annualRev < RevRng29) {
+		TaxRate = 18300;
+		CoreScale = 0.30;
+		AddOnsScale = 1.50;
+	} else if (annualRev >= RevRng29 && annualRev < RevRng30) {
+		TaxRate = 19500;
+		CoreScale = 0.30;
+		AddOnsScale = 1.75;
+	} else if (annualRev >= RevRng30 && annualRev < RevRng31) {
+		TaxRate = 20700;
+		CoreScale = 0.30;
+		AddOnsScale = 2.00;
+	} else if (annualRev >= RevRng31 && annualRev < RevRng32) {
+		TaxRate = 21900;
+		CoreScale = 0.40;
+		AddOnsScale = 2.25;
+	} else if (annualRev >= RevRng32 && annualRev < RevRng33) {
+		TaxRate = 23100;
+		CoreScale = 0.40;
+		AddOnsScale = 2.50;
+	} else if (annualRev >= RevRng33 && annualRev < RevRng34) {
+		TaxRate = 24300;
+		CoreScale = 0.40;
+		AddOnsScale = 2.75;
+	} else if (annualRev >= RevRng34 && annualRev < RevRng35) {
+		TaxRate = 25500;
+		CoreScale = 0.50;
+		AddOnsScale = 3.00;
+	} else if (annualRev >= RevRng35) {
+		TaxRate = 26700;
+		CoreScale = 0.50;
+		AddOnsScale = 3.25;
+	}
+
+
+
+	//Update Financial Statements
+	var optionFinancialType = document.getElementById('FinancialType').value
+	var convertOption = 1;
+	var TotalFinancialRate = 0;
+	var financialRate = 206.25;
+	var financialBase = 68.75;
+	
+	if (optionFinancialType === "Standard") {
+		convertOption = (1 * financialRate) + financialBase;
+		TotalFinancialRate = convertOption * (1 + CoreScale);
+	} else if (optionFinancialType === "Classes") {
+		convertOption = (1.5 * financialRate) + financialBase;
+		TotalFinancialRate = convertOption * (1 + CoreScale);
+	} else if (optionFinancialType === "Multiple") {
+		convertOption = (2 * financialRate) + financialBase;
+		TotalFinancialRate = convertOption * (1 + CoreScale);
+	} 
+
+	
+	if (document.Quoter.chkFinancialType.checked == true) {		
+		document.getElementById('FinancialTypeCost').value = TotalFinancialRate.toFixed(0);
+	} else {
+		document.getElementById('FinancialTypeCost').value = '';
+	}
+	
+	
+	//Update Forecasting
+	var convertFcstCount = document.getElementById('FcstCount').value
+	var convertFcstRate = 0;
+	var TotalFcstRate = 0;
+	var forecastRate = 125;
+	var forecastBase = 125;
+	
+	if (convertFcstCount === "" || convertFcstCount == 0) {
+		document.getElementById('FcstCountCost').value = '';
+	} else {
+		if (document.Quoter.chkFcstCount.checked == true) {
+			convertFcstRate = (convertFcstCount * forecastRate) + forecastBase;
+			TotalFcstRate = convertFcstRate * (1 + CoreScale);
+			document.getElementById('FcstCountCost').value = TotalFcstRate.toFixed(0);
+		} else {
+			document.getElementById('FcstCountCost').value = '';
+		}
+	}
+	
+	
+	//Update Virtual CFO Services
+	var CFORate = 400;
+	var TotalCFORate = 0;
+	
+	if (document.Quoter.chkCFOServices.checked == true) {
+		TotalCFORate = CFORate * (1 + CoreScale);
+		document.getElementById('CFOServicesCost').value = TotalCFORate.toFixed(0);
+	} else {
+		document.getElementById('CFOServicesCost').value = '';
+	}
+	
+	
+	//Update Payroll Administration
+	var EmpRate = 0;
+		
+	if (EmpCounter === "" || EmpCounter == 0) {
+		document.getElementById('PayrollAdminCost').value = '';
+	} else {
+		if (document.Quoter.chkPayrollAdmin.checked == true) {
+			if (EmpCounter >= 1 && EmpCounter <= 10) {
+				EmpRate = 50;
+			} else if (EmpCounter >= 11 && EmpCounter <= 20) {
+				EmpRate = 70;
+			} else if (EmpCounter >= 21 && EmpCounter <= 30) {
+				EmpRate = 90;
+			} else if (EmpCounter >= 31 && EmpCounter <= 40) {
+				EmpRate = 110;
+			} else if (EmpCounter >= 41 && EmpCounter <= 50) {
+				EmpRate = 130;
+			} else if (EmpCounter >= 51 && EmpCounter <= 100) {
+				EmpRate = 175;
+			} else if (EmpCounter >= 101 && EmpCounter <= 150) {
+				EmpRate = 200;
+			} else if (EmpCounter >= 151 && EmpCounter <= 200) {
+				EmpRate = 225;
+			} else if (EmpCounter >= 201 && EmpCounter <= 250) {
+				EmpRate = 250;
+			} else if (EmpCounter >= 251) {
+				EmpRate = 300;
+			}
+			
+			document.getElementById('PayrollAdminCost').value = EmpRate.toFixed(0);
+		} else {
+			document.getElementById('PayrollAdminCost').value = '';
+		}
+	}
+	
+	
+	//Update Emploee Expense Tracking
+	var EmpExpRate = 0;
+	
+	if (EmpCounter === "" || EmpCounter == 0) {
+		document.getElementById('EmpExpenseTrackCost').value = '';
+	} else {
+		if (document.Quoter.chkEmpExpenseTrack.checked == true) {
+			if (EmpCounter >= 1 && EmpCounter <= 10) {
+				EmpExpRate = 50;
+			} else if (EmpCounter >= 11 && EmpCounter <= 20) {
+				EmpExpRate = 70;
+			} else if (EmpCounter >= 21 && EmpCounter <= 30) {
+				EmpExpRate = 90;
+			} else if (EmpCounter >= 31 && EmpCounter <= 40) {
+				EmpExpRate = 110;
+			} else if (EmpCounter >= 41 && EmpCounter <= 50) {
+				EmpExpRate = 130;
+			} else if (EmpCounter >= 51 && EmpCounter <= 100) {
+				EmpExpRate = 175;
+			} else if (EmpCounter >= 101 && EmpCounter <= 150) {
+				EmpExpRate = 200;
+			} else if (EmpCounter >= 151 && EmpCounter <= 200) {
+				EmpExpRate = 225;
+			} else if (EmpCounter >= 201 && EmpCounter <= 250) {
+				EmpExpRate = 250;
+			} else if (EmpCounter >= 251) {
+				EmpExpRate = 300;
+			}
+			
+			document.getElementById('EmpExpenseTrackCost').value = EmpExpRate.toFixed(0);
+		} else {
+			document.getElementById('EmpExpenseTrackCost').value = '';
+		}
+	}
+	
+	
+	//Update Cash Flow Management
+	var CFRate = 0;
+	if (document.Quoter.chkCashFlow.checked == true) {
+		if (document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true) {
+			document.getElementById('CashFlowCost').value = 'Included with AR / AP';
+		} else {
+			CFRate = 200;
+			document.getElementById('CashFlowCost').value = CFRate.toFixed(0);
+		}
+	} else {
+		document.getElementById('CashFlowCost').value = '';
+	}
+	
+
+	
+	//Update Bank Reconciliations
+	var convertBankRecCount = document.getElementById('BankRecs').value;
+	var BankRecRate = 25;
+	var TotalBankRecRate = 0;
+	
+	if (convertBankRecCount === "" || convertBankRecCount == 0) {
+		document.getElementById('BankRecsCost').value = '';
+	} else {
+		if (document.Quoter.chkBankRecs.checked == true) {
+			TotalBankRecRate = BankRecRate * convertBankRecCount;
+			document.getElementById('BankRecsCost').value = TotalBankRecRate.toFixed(0);
+		} else {
+			document.getElementById('BankRecsCost').value = '';
+		}
+	}
+	
+	
+	
+	//Update Credit Card Reconciliations
+	var convertCreditCardCount = document.getElementById('CreditCardRecs').value
+	var CreditCardRecRate = 25;
+	var TotalCreditCardRecRate = 0;
+	
+	if (convertCreditCardCount === "" || convertCreditCardCount == 0) {
+		document.getElementById('CreditCardRecsCost').value = '';
+	} else {
+		if (document.Quoter.chkCreditCardRecs.checked == true) {
+			TotalCreditCardRecRate = CreditCardRecRate * convertCreditCardCount;
+			document.getElementById('CreditCardRecsCost').value = TotalCreditCardRecRate.toFixed(0);
+		} else {
+			document.getElementById('CreditCardRecsCost').value = '';
+		}
+	}
+	
+	
+	//Update Accounts Payable
+	var optionAP = document.getElementById('AccountsPayable').value
+	var TotalAPRate = 0;
+	
+	if (optionAP === "Low") {
+		TotalAPRate = 350 * (1 + AddOnsScale);
+	} else if (optionAP === "Medium") {
+		TotalAPRate = 500 * (1 + AddOnsScale);
+	} else if (optionAP === "High") {
+		TotalAPRate = 650 * (1 + AddOnsScale);
+	} 
+
+	if (document.Quoter.chkAccountsPayable.checked == true) {		
+		document.getElementById('AccountsPayableCost').value = TotalAPRate.toFixed(0);
+	} else {
+		document.getElementById('AccountsPayableCost').value = '';
+	}	
+	
+	
+	
+	//Update Accounts Receivable
+	var optionAR = document.getElementById('AccountsRecievable').value
+	var TotalARRate = 0;
+	
+	if (optionAR === "Low") {
+		TotalARRate = 350 * (1 + AddOnsScale);
+	} else if (optionAR === "Medium") {
+		TotalARRate = 500 * (1 + AddOnsScale);
+	} else if (optionAR === "High") {
+		TotalARRate = 650 * (1 + AddOnsScale);
+	} 
+
+	if (document.Quoter.chkAccountsRecievable.checked == true) {		
+		document.getElementById('AccountsRecievableCost').value = TotalARRate.toFixed(0);
+	} else {
+		document.getElementById('AccountsRecievableCost').value = '';
+	}	
+	
+	
+	
+	//Update Business Tax
+	var weekTaxRate = (TaxRate / 52);
+	
+	if (document.Quoter.chkBusinessTax.checked == true) {		
+		document.getElementById('BusinessTaxCost').value = weekTaxRate.toFixed(0);
+	} else {
+		document.getElementById('BusinessTaxCost').value = '';
+	}	
+	
+	
+	
+	//Update Individual Tax
+	var IndCount = document.getElementById('IndividualTax').value;
+	var IndRate = 6;
+	var TotalIndRate = 0;
+		
+	if (IndCount === "" || IndCount == 0) {
+		document.getElementById('IndividualTaxCost').value = '';
+	} else {
+		if (document.Quoter.chkIndividualTax.checked == true) {	
+			TotalIndRate = (IndCount * IndRate);	
+			document.getElementById('IndividualTaxCost').value = TotalIndRate.toFixed(0);
+		} else {
+			document.getElementById('IndividualTaxCost').value = '';	
+		}
+	}
+
+	
+	//Update Multi-State Tax
+	var MultiCount = document.getElementById('MultiStateTax').value
+	var MultiRate = 4;
+	var TotalMultiRate = 0;
+	
+	if (MultiCount === "" || MultiCount == 0) {
+		document.getElementById('MultiStateTaxCost').value = '';
+	} else {
+		if (document.Quoter.chkMultiStateTax.checked == true) {		
+			TotalMultiRate = MultiCount * MultiRate;
+			document.getElementById('MultiStateTaxCost').value = TotalMultiRate.toFixed(0);
+		} else {
+			document.getElementById('MultiStateTaxCost').value = '';	
+		}
+	}
+	
+	
+	//Update Sales Tax
+	var SalesTaxCount = document.getElementById('SalesTax').value
+	var SalesTaxRate = 4;
+	var TotalSalesTaxRate = 0;
+
+	if (SalesTaxCount === "" || SalesTaxCount == 0) {
+		document.getElementById('SalesTaxCost').value = '';
+	} else {
+		if (document.Quoter.chkSalesTax.checked == true) {		
+			TotalSalesTaxRate = SalesTaxCount * SalesTaxRate;
+			document.getElementById('SalesTaxCost').value = TotalSalesTaxRate.toFixed(0);
+		} else {
+			document.getElementById('SalesTaxCost').value = '';	
+		}
+	}
+	
+	
+	//Update Personal Property Tax
+	var PPTCount = document.getElementById('PersonalPropertyTax').value
+	var PPTRate = 4;
+	var TotalPPTRate = 0;
+	
+	if (PPTCount === "" || PPTCount == 0) {
+		document.getElementById('PersonalPropertyTaxCost').value = '';
+	} else {
+		if (document.Quoter.chkPersonalPropertyTax.checked == true) {	
+			TotalPPTRate = PPTCount * PPTRate;
+			document.getElementById('PersonalPropertyTaxCost').value = TotalPPTRate.toFixed(0);
+		} else {
+			document.getElementById('PersonalPropertyTaxCost').value = '';	
+		}
+	}
+	
+	//Update 1099s
+	var count1099 = document.getElementById('1099Filings').value
+	var rate1099 = 0;
+	
+	if (count1099 === "" || count1099 == 0) {
+		document.getElementById('1099FilingsCost').value = '';
+	} else {
+		if (document.Quoter.chk1099Filings.checked == true) {	
+			if (count1099 <10){
+				rate1099 = (150/52);
+			} else {
+				rate1099 = ((count1099/10*50+150)/52);
+			}
+
+			document.getElementById('1099FilingsCost').value = rate1099.toFixed(0);
+			
+		} else {
+			document.getElementById('1099FilingsCost').value = '';	
+		}
+	}	
+	
+	
+	/*
+	
+		if (document.Quoter.chkFinancialType.checked == true || document.Quoter.chkFcstCount.checked == true ||
+		document.Quoter.chkCFOServices.checked == true || document.Quoter.chkPayrollAdmin.checked == true ||
+		document.Quoter.chkEmpExpenseTrack.checked == true || document.Quoter.chkCashFlow.checked == true ||
+		document.Quoter.chkBankRecs.checked == true || document.Quoter.chkCreditCardRecs.checked == true ||
+		document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true ||
+		document.Quoter.chkBusinessTax.checked == true || document.Quoter.chkIndividualTax.checked == true ||
+		document.Quoter.chkMultiStateTax.checked == true || document.Quoter.chkSalesTax.checked == true ||
+		document.Quoter.chkPersonalPropertyTax.checked == true || document.Quoter.chk1099Filings.checked == true		
+		*/
+		
+	if (document.Quoter.chkFinancialType.checked == true) {
+		TotalWeeklyFee = TotalWeeklyFee + TotalFinancialRate
+		
+		if (document.Quoter.chkFcstCount.checked == true) {
+		TotalWeeklyFee = TotalWeeklyFee + TotalFcstRate
+		
+		if (document.Quoter.chkCFOServices.checked == true) {
+		TotalWeeklyFee = TotalWeeklyFee + TotalCFORate
+		
+		
+		
+		
+		}
+		}
+		}
+
+		 || document.Quoter.chkPayrollAdmin.checked == true ||
+		document.Quoter.chkEmpExpenseTrack.checked == true || document.Quoter.chkCashFlow.checked == true ||
+		document.Quoter.chkBankRecs.checked == true || document.Quoter.chkCreditCardRecs.checked == true ||
+		document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true ||
+		document.Quoter.chkBusinessTax.checked == true || document.Quoter.chkIndividualTax.checked == true ||
+		document.Quoter.chkMultiStateTax.checked == true || document.Quoter.chkSalesTax.checked == true ||
+		document.Quoter.chkPersonalPropertyTax.checked == true || document.Quoter.chk1099Filings.checked == true) {
+		
+		//Calculate Weekly and Annual Fees
+		var TotalWeeklyFee = (TotalFinancialRate + TotalFcstRate + TotalCFORate + EmpRate + EmpExpRate + CFRate + TotalBankRecRate + TotalCreditCardRecRate + TotalAPRate + TotalARRate + weekTaxRate + TotalIndRate + 
+			TotalMultiRate + TotalSalesTaxRate + TotalPPTRate + rate1099)
+		var AnnualizeFee = (TotalWeeklyFee * 52);
+	
+		document.getElementById('TotalWeeklyCost').value = TotalWeeklyFee.toFixed(0);
+		document.getElementById('TotalAnnualFee').value = AnnualizeFee.toFixed(0);
+	
+	
+	
+		//Get Service Type and calculate Onboarding Fee
+		var convertServiceRate = document.getElementById('ServiceType').value;
+		var ServiceFactor = 0;
+		if (convertServiceRate === "CFO") {
+			ServiceFactor = 8;
+		} else if (convertServiceRate === "Controller") {
+			ServiceFactor = 6;
+		} else if (convertServiceRate === "Transactional") {
+			ServiceFactor = 4;
+		} 
+	
+		var OnboardingFee = ServiceFactor * TotalWeeklyFee;
+		document.getElementById('OnboardingCost').value = OnboardingFee.toFixed(0);
+		
+	} else {
+		document.getElementById('TotalWeeklyCost').value = '';
+		document.getElementById('TotalAnnualFee').value = '';
+		document.getElementById('OnboardingCost').value = '';
+	}
+	
+
+	
+}
+
+
+</script>
+
 </head>
 <body onload="document.Quoter.reset();">
     <div class="mainbox">
@@ -123,43 +689,45 @@ function validateForm() {
         <h1>Summit CPA Group - Virtual CFO Quote</h1>
 	  </div>
 	  <br>
-        <font size="4"><b>Client Information</b></font><br>
-		<font size="2" color="red"><i>Fields marked with * are required</i></font>
 
+		<p><font size="4"><b>Client Information</b></font><br>
+		<font size="2" color="red"><i>Fields marked with * are required</i></font></p>
+		
+		
 		<div class="item">
 			<div class="form-item">
 				<label for="Fname"><b>First Name <font color="red">*</font></b></label>
 				<input type="text" name="Fname" id="Fname" placeholder="First Name" required />
 			</div>
 			<div class="form-item">
-				<label for="Fname"><b>Last Name <font color="red">*</font></b></label>
+				<label for="Lname"><b>Last Name <font color="red">*</font></b></label>
 				<input type="text" name="Lname" id="Lname" placeholder="Last Name" required />
 			</div>
 		</div>
+		
 
 		<br style="clear:both;" />
 	
 		<div class="item">
 			<div class="form-item">
-				<label for="Fname"><b>Email <font color="red">*</font></b></label>
+				<label for="Email"><b>Email <font color="red">*</font></b></label>
 				<input type="text" name="Email" id="Email" placeholder="Email" required />
 			</div>
 			<div class="form-item">
-				<label for="Fname"><b>Phone <font color="red">*</font></b></label>
+				<label for="Phone"><b>Phone <font color="red">*</font></b></label>
 				<input type="text" name="Phone" id="Phone" placeholder="Phone" required />
 			</div>
 		</div>
 
 		<br style="clear:both;" />
 
-
 		<div class="item">
 			<div class="form-item">
-				<label for="Fname"><b>Organization <font color="red">*</font></b></label>
+				<label for="organization"><b>Organization <font color="red">*</font></b></label>
 				<input type="text" name="organization" id="organization" placeholder="Organization" required />
 			</div>
 			<div class="form-item">
-				<label for="Fname"><b>Title <font color="red">*</font></b></label>
+				<label for="title"><b>Title <font color="red">*</font></b></label>
 				<input type="text" name="title" id="title" placeholder="Title" required />
 			</div>
 		</div>
@@ -238,32 +806,330 @@ function validateForm() {
 			<div class="header">
 				<h2>Virtual CFO Service Quote Criteria</h2>
 			</div>
-		
-		
-		    <div class="item selection-rng">
-				<p><b>Annual Revenue Range:</b></p>
-				<div class="selection-rng-item">
-					<label><input type="radio" name="revRng" value="0-500"><span>$0k - $500k</span></label>
-					<label><input type="radio" name="revRng" value="500-2000"><span>$500k - $2 mil</span></label>
-					<label><input type="radio" name="revRng" value="2000-10000"><span>$2 mil - $10 mil</span></label>
-					<label><input type="radio" name="revRng" value="10000-25000"><span>$10 mil - $25 mil</span></label>
-					<label><input type="radio" name="revRng" value="25000up"><span>Over $25 mil</span></label>
+			
+			<div class="item">
+				<div class="form2-item">
+					<label for="AnnualRev"><b>Annual Revenue: <font color="red">*</font></b></label>
+					<input type="text" name="AnnualRev" id="AnnualRev" style="width: 150px;" onkeyup="updateCosts()" required />
 				</div>
 			</div>
+			
+			<div class="item">
+				<div class="form2-item">
+					<label for="ServiceType"><b>Service Type: <font color="red">*</font></b></label>
+					<select name="ServiceType" id="ServiceType" autocomplete="off" onchange="updateCosts()" required>
+					<option value="CFO" selected>Virtual CFO Services</option>
+					<option value="Controller">Controllership Services</option>
+					<option value="Transactional">Transactional Services</option>
+					</select>
+				</div>
+			</div>
+			
+			<br style="clear:both;" />
+			
+			<div class="item">
+				<div class="form2-item">
+					<label for="EmpCount"><b>Number of Employees and/or Contractors: <font color="red">*</font></b></label>
+					<input type="text" name="EmpCount" id="EmpCount" style="width: 50%;" onkeyup="updateCosts()" required />
+				</div>
+			</div>
+			
 
+
+			
+			<hr style="clear:both; color:#095484;" />
+			
+
+			<table>
+				<tbody>
+					<tr id="tr1">
+						<th>Services</th>
+						<th>Description</th>
+						<th>Desired Value</th>
+						<th>Add Service?</th>
+						<th>Weekly Cost</th>
+					</tr>
+					<tr>
+						<td id="td1"><b>Core Services</b></td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Financial Statements</td>
+						<td>Type of Financial Statements</td>
+						<td>
+							<select name="FinancialType" id="FinancialType" autocomplete="off" onchange="updateCosts()">
+							<option value="Standard" selected>Standard</option>
+							<option value="Classes">Standard with Classes</option>
+							<option value="Multiple">Multiple Companies / Locations</option>
+							</select>
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkFinancialType" value="chkFinancialType" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="FinancialTypeCost" name="FinancialTypeCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Forecasting</td>
+						<td>Number of Forecasts</td>
+						<td>
+							<input type="text" name="FcstCount" id="FcstCount" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkFcstCount" value="chkFcstCount" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="FcstCountCost" name="FcstCountCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Virtual CFO Services</td>
+						<td>CFO Service Package</td>
+						<td>
+							&nbsp;
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkCFOServices" value="chkCFOServices" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="CFOServicesCost" name="CFOServicesCost"></td>
+					</tr>
+					
+					
+					<tr>
+						<td id="td1"><br><b>Add Ons</b></td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Payroll Administration</td>
+						<td>Does not include payroll processing</td>
+						<td>
+							&nbsp;
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkPayrollAdmin" value="chkPayrollAdmin" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="PayrollAdminCost" name="PayrollAdminCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Employee Expense Tracking</td>
+						<td>&nbsp;</td>
+						<td>
+							&nbsp;
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkEmpExpenseTrack" value="chkEmpExpenseTrack" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="EmpExpenseTrackCost" name="EmpExpenseTrackCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Cash Flow Management</td>
+						<td>Weekly Cash Flow Meeting - 13 wk outlook</td>
+						<td>
+							&nbsp;
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkCashFlow" value="chkCashFlow" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="CashFlowCost" name="CashFlowCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Bank Reconciliations</td>
+						<td>Enter number of Accounts to Reconcile</td>
+						<td>
+							<input type="text" name="BankRecs" id="BankRecs" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkBankRecs" value="chkBankRecs" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="BankRecsCost" name="BankRecsCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Credit Card Reconciliations</td>
+						<td>Enter number of Accounts to Reconcile</td>
+						<td>
+							<input type="text" name="CreditCardRecs" id="CreditCardRecs" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkCreditCardRecs" value="chkCreditCardRecs" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="CreditCardRecsCost" name="CreditCardRecsCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Accounts Payable</td>
+						<td>Paying Bills - Select range of transaction occurrence</td>
+						<td>
+							<select name="AccountsPayable" id="AccountsPayable" autocomplete="off" onchange="updateCosts()">
+							<option value="Low" selected>Low</option>
+							<option value="Medium">Medium</option>
+							<option value="High">High</option>
+							</select>
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkAccountsPayable" value="chkAccountsPayable" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="AccountsPayableCost" name="AccountsPayableCost"></td>
+					</tr>					
+					
+					<tr>
+						<td>&emsp;Accounts Receivable</td>
+						<td>Sending Invoices - Select range of transaction occurrence</td>
+						<td>
+							<select name="AccountsRecievable" id="AccountsRecievable" autocomplete="off" onchange="updateCosts()">
+							<option value="Low" selected>Low</option>
+							<option value="Medium">Medium</option>
+							<option value="High">High</option>
+							</select>
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkAccountsRecievable" value="chkAccountsRecievable" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="AccountsRecievableCost" name="AccountsRecievableCost"></td>
+					</tr>
+					
+					<tr>
+						<td id="td1"><br><b>Tax Returns & Tax Planning</b></td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+						<td id="td1">&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Business Tax Return</td>
+						<td>Based on Annual Revenue</td>
+						<td>
+							&nbsp;
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkBusinessTax" value="chkBusinessTax" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="BusinessTaxCost" name="BusinessTaxCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Individual Tax Return</td>
+						<td>Enter number of Owners/Partners</td>
+						<td>
+							<input type="text" name="IndividualTax" id="IndividualTax" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkIndividualTax" value="chkIndividualTax" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="IndividualTaxCost" name="IndividualTaxCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Multi-State Tax Return</td>
+						<td>Enter number of States</td>
+						<td>
+							<input type="text" name="MultiStateTax" id="MultiStateTax" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkMultiStateTax" value="chkMultiStateTax" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="MultiStateTaxCost" name="MultiStateTaxCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Sales Tax Return</td>
+						<td>Enter number of States</td>
+						<td>
+							<input type="text" name="SalesTax" id="SalesTax" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkSalesTax" value="chkSalesTax" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="SalesTaxCost" name="SalesTaxCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Personal Property Tax Return</td>
+						<td>Enter number of States</td>
+						<td>
+							<input type="text" name="PersonalPropertyTax" id="PersonalPropertyTax" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chkPersonalPropertyTax" value="chkPersonalPropertyTax" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="PersonalPropertyTaxCost" name="PersonalPropertyTaxCost"></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;1099 Filings</td>
+						<td>Enter number of 1099s to be filed</td>
+						<td>
+							<input type="text" name="1099Filings" id="1099Filings" style="width: 50px;" onkeyup="updateCosts()" />
+						</td>
+						<td id="td2">
+							<input type="checkbox" class="addcart" name="chk1099Filings" value="chk1099Filings" onchange="updateCosts()">
+						</td>
+						<td><input type="text" readonly id="1099FilingsCost" name="1099FilingsCost"></td>
+					</tr>						
+					
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+			
+					<tr>
+						<td id="td3">&nbsp;</td>
+						<td id="td3">&nbsp;</td>
+						<td id="td3">&nbsp;</td>
+						<td id="td3"><br><b>Total Weekly Fee: </b></td>
+						<td id="td3"><br><input type="text" readonly id="TotalWeeklyCost" name="TotalWeeklyCost"></td>
+					</tr>
+					
+					<tr>
+						<td id="td3">&nbsp;</td>
+						<td id="td3">&nbsp;</td>
+						<td id="td3">&nbsp;</td>
+						<td id="td3"><br><b>Total Annualized Fee: </b></td>
+						<td id="td3"><br><input type="text" readonly id="TotalAnnualFee" name="TotalAnnualFee"></td>
+					</tr>
+					
+					<tr>
+						<td id="td3">&nbsp;</td>
+						<td id="td3">&nbsp;</td>
+						<td id="td3">&nbsp;</td>
+						<td id="td3"><br><b>Onboarding Fee: </b></td>
+						<td id="td3"><br><input type="text" readonly id="OnboardingCost" name="OnboardingCost"></td>
+					</tr>
+					
+				</tbody>
+			</table>
 		
+		
+		
+			<br style="clear:both;" />
 	
 		
 			<div class="item">
 			<p><b>Any other information you want to provide?</b></p>
 			<textarea rows="5"></textarea>
 			</div>
+			
+			
+
 		
-			<div class="btn-block">
-				<button type="submit" onClick="userSubmit()">SEND</button>
-				<button type="submit" onClick="resetform()">RESET</button>
-			</div>
-		
+		</div>
+		<div class="btn-block">
+			<button type="submit" onchange="userSubmit()">SEND</button>
+			<button type="submit" onchange="resetform()">RESET</button>
 		</div>
 		</form>
 	</div>

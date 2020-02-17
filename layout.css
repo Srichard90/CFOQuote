@@ -143,6 +143,59 @@ button:hover {
 		float: left;
 		margin: 0 10px 0 10px;
 	}
-	
-	
+	.form2-item {
+		float: left;
+		margin: 0 10px 0 10px;
+	}
+
+
+table {
+	width: 100%;
+}
+
+th {
+	height: 50px;
+}
+
+
+td {
+	text-align: left;
+	vertical-align: middle;
+}
+
+#td1 {
+	vertical-align:center; 
+	border-bottom: 1px solid #ddd;
+}
+
+#td2 {
+	vertical-align:center; 
+	height: 45px;
+}
+
+#td3 {
+	vertical-align:center; 
+	height: 45px;
+	border-bottom: 1px solid #ddd;
+	text-align: right;
+}
+
+tr {
+	vertical-align: middle;
+}
+
+#tr1 {
+	text-align:center; 
+	height: 50px;
+	background-color: #095484;
+	color: #fff;
+}
+
+#tr2 {
+	text-align:left;
+	border-bottom: 1px solid #ddd;	
+}
+
+
+
 }
