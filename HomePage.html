@@ -295,19 +295,20 @@ function updateCosts() {
 	var financialRate = 206.25;
 	var financialBase = 68.75;
 	
-	if (optionFinancialType === "Standard") {
-		convertOption = (1 * financialRate) + financialBase;
-		TotalFinancialRate = convertOption * (1 + CoreScale);
-	} else if (optionFinancialType === "Classes") {
-		convertOption = (1.5 * financialRate) + financialBase;
-		TotalFinancialRate = convertOption * (1 + CoreScale);
-	} else if (optionFinancialType === "Multiple") {
-		convertOption = (2 * financialRate) + financialBase;
-		TotalFinancialRate = convertOption * (1 + CoreScale);
-	} 
+
 
 	
 	if (document.Quoter.chkFinancialType.checked == true) {		
+		if (optionFinancialType === "Standard") {
+			convertOption = (1 * financialRate) + financialBase;
+			TotalFinancialRate = convertOption * (1 + CoreScale);
+		} else if (optionFinancialType === "Classes") {
+			convertOption = (1.5 * financialRate) + financialBase;
+			TotalFinancialRate = convertOption * (1 + CoreScale);
+		} else if (optionFinancialType === "Multiple") {
+			convertOption = (2 * financialRate) + financialBase;
+			TotalFinancialRate = convertOption * (1 + CoreScale);
+		} 
 		document.getElementById('FinancialTypeCost').value = TotalFinancialRate.toFixed(0);
 	} else {
 		document.getElementById('FinancialTypeCost').value = '';
@@ -472,15 +473,14 @@ function updateCosts() {
 	var optionAP = document.getElementById('AccountsPayable').value
 	var TotalAPRate = 0;
 	
-	if (optionAP === "Low") {
-		TotalAPRate = 350 * (1 + AddOnsScale);
-	} else if (optionAP === "Medium") {
-		TotalAPRate = 500 * (1 + AddOnsScale);
-	} else if (optionAP === "High") {
-		TotalAPRate = 650 * (1 + AddOnsScale);
-	} 
-
 	if (document.Quoter.chkAccountsPayable.checked == true) {		
+		if (optionAP === "Low") {
+			TotalAPRate = 350 * (1 + AddOnsScale);
+		} else if (optionAP === "Medium") {
+			TotalAPRate = 500 * (1 + AddOnsScale);
+		} else if (optionAP === "High") {
+			TotalAPRate = 650 * (1 + AddOnsScale);
+		} 
 		document.getElementById('AccountsPayableCost').value = TotalAPRate.toFixed(0);
 	} else {
 		document.getElementById('AccountsPayableCost').value = '';
@@ -492,15 +492,14 @@ function updateCosts() {
 	var optionAR = document.getElementById('AccountsRecievable').value
 	var TotalARRate = 0;
 	
-	if (optionAR === "Low") {
-		TotalARRate = 350 * (1 + AddOnsScale);
-	} else if (optionAR === "Medium") {
-		TotalARRate = 500 * (1 + AddOnsScale);
-	} else if (optionAR === "High") {
-		TotalARRate = 650 * (1 + AddOnsScale);
-	} 
-
-	if (document.Quoter.chkAccountsRecievable.checked == true) {		
+	if (document.Quoter.chkAccountsRecievable.checked == true) {	
+		if (optionAR === "Low") {
+			TotalARRate = 350 * (1 + AddOnsScale);
+		} else if (optionAR === "Medium") {
+			TotalARRate = 500 * (1 + AddOnsScale);
+		} else if (optionAR === "High") {
+			TotalARRate = 650 * (1 + AddOnsScale);
+		} 
 		document.getElementById('AccountsRecievableCost').value = TotalARRate.toFixed(0);
 	} else {
 		document.getElementById('AccountsRecievableCost').value = '';
@@ -509,9 +508,10 @@ function updateCosts() {
 	
 	
 	//Update Business Tax
-	var weekTaxRate = (TaxRate / 52);
+	var weekTaxRate = 0;
 	
 	if (document.Quoter.chkBusinessTax.checked == true) {		
+		weekTaxRate = (TaxRate / 52);
 		document.getElementById('BusinessTaxCost').value = weekTaxRate.toFixed(0);
 	} else {
 		document.getElementById('BusinessTaxCost').value = '';
@@ -608,35 +608,12 @@ function updateCosts() {
 	}	
 	
 	
-	/*
+	//Calculate Weekly and Annual Fees
+	var TotalWeeklyFee = 0;
+	var AnnualizeFee = 0;
 	
-		if (document.Quoter.chkFinancialType.checked == true || document.Quoter.chkFcstCount.checked == true ||
+	if (document.Quoter.chkFinancialType.checked == true || document.Quoter.chkFcstCount.checked == true ||
 		document.Quoter.chkCFOServices.checked == true || document.Quoter.chkPayrollAdmin.checked == true ||
-		document.Quoter.chkEmpExpenseTrack.checked == true || document.Quoter.chkCashFlow.checked == true ||
-		document.Quoter.chkBankRecs.checked == true || document.Quoter.chkCreditCardRecs.checked == true ||
-		document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true ||
-		document.Quoter.chkBusinessTax.checked == true || document.Quoter.chkIndividualTax.checked == true ||
-		document.Quoter.chkMultiStateTax.checked == true || document.Quoter.chkSalesTax.checked == true ||
-		document.Quoter.chkPersonalPropertyTax.checked == true || document.Quoter.chk1099Filings.checked == true		
-		*/
-		
-	if (document.Quoter.chkFinancialType.checked == true) {
-		TotalWeeklyFee = TotalWeeklyFee + TotalFinancialRate
-		
-		if (document.Quoter.chkFcstCount.checked == true) {
-		TotalWeeklyFee = TotalWeeklyFee + TotalFcstRate
-		
-		if (document.Quoter.chkCFOServices.checked == true) {
-		TotalWeeklyFee = TotalWeeklyFee + TotalCFORate
-		
-		
-		
-		
-		}
-		}
-		}
-
-		 || document.Quoter.chkPayrollAdmin.checked == true ||
 		document.Quoter.chkEmpExpenseTrack.checked == true || document.Quoter.chkCashFlow.checked == true ||
 		document.Quoter.chkBankRecs.checked == true || document.Quoter.chkCreditCardRecs.checked == true ||
 		document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true ||
@@ -644,14 +621,12 @@ function updateCosts() {
 		document.Quoter.chkMultiStateTax.checked == true || document.Quoter.chkSalesTax.checked == true ||
 		document.Quoter.chkPersonalPropertyTax.checked == true || document.Quoter.chk1099Filings.checked == true) {
 		
-		//Calculate Weekly and Annual Fees
-		var TotalWeeklyFee = (TotalFinancialRate + TotalFcstRate + TotalCFORate + EmpRate + EmpExpRate + CFRate + TotalBankRecRate + TotalCreditCardRecRate + TotalAPRate + TotalARRate + weekTaxRate + TotalIndRate + 
-			TotalMultiRate + TotalSalesTaxRate + TotalPPTRate + rate1099)
-		var AnnualizeFee = (TotalWeeklyFee * 52);
+		TotalWeeklyFee = TotalFinancialRate + TotalFcstRate + TotalCFORate + EmpRate + EmpExpRate + CFRate + TotalBankRecRate + TotalCreditCardRecRate + TotalAPRate + TotalARRate + weekTaxRate + 
+							TotalIndRate + TotalMultiRate + TotalSalesTaxRate + TotalPPTRate + rate1099;
+		AnnualizeFee = (TotalWeeklyFee * 52);
 	
 		document.getElementById('TotalWeeklyCost').value = TotalWeeklyFee.toFixed(0);
 		document.getElementById('TotalAnnualFee').value = AnnualizeFee.toFixed(0);
-	
 	
 	
 		//Get Service Type and calculate Onboarding Fee
@@ -673,8 +648,6 @@ function updateCosts() {
 		document.getElementById('TotalAnnualFee').value = '';
 		document.getElementById('OnboardingCost').value = '';
 	}
-	
-
 	
 }
 
