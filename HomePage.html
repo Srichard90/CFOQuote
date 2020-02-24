@@ -15,61 +15,105 @@ function userSubmit() {
 	//Design by Steve Richardville of Summit CPA Group
 	
 	//Check for form completion, cancel if false
-	/*
+	
 	if(!validateForm()){
 		return false;
 	} 
-	*/
 	
-	//Declare variables
-    var fname = document.getElementById('Fname').value;
-    var lname = document.getElementById('Lname').value;
-	var email = document.getElementById('Email').value;
-	var phone = document.getElementById('Phone').value;
-	var org = document.getElementById('organization').value;
-	var title = document.getElementById('title').value;
-	var address1 = document.getElementById('address1').value;
-	var address2 = document.getElementById('address2').value;
-	var city = document.getElementById('city').value;
-	var state = document.getElementById('state').value;
-	var zip = document.getElementById('zip').value;
-	var country = document.getElementById('country').value;
-	
-	var errMsg="";
-	
-	/*
+	var errCount=0;
+	var errMsg=[];
+	var ERRtext="";
+	var fieldUni=0;
 	
 	//Check email format
-    if(email.value.length > 0) {
+    if(Email.value.length > 0) {
 		const emailformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		
-		if(!Quoter.email.value.match(emailformat)) {
-			errMsg = "E-Mail is not in a valid format."
-			alert(errMsg);
-			return false;
+		if(!Quoter.Email.value.match(emailformat)) {
+			errMsg[errCount] = "E-Mail is not in a valid format.";
+			errCount += 1;
+			fieldUni += 1;
 		}
     }			
 	
+
 	//Check phone number format
-    if(phone.value.length > 0) {
+    if(Phone.value.length > 0) {
 		const phoneformat = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
 		
-		if(!Quoter.phone.value.match(phoneformat)) {
-			errMsg = phone.value + " is not a valid phone number. Please check formatting.";
-			alert(errMsg);
-			return false;
+		if(!Quoter.Phone.value.match(phoneformat)) {
+			errMsg[errCount] = Phone.value + " is not a valid phone number. Please check formatting.";
+			errCount += 1;
+			fieldUni += 2;
 		}
     }	
 	
-	*/
-	alert('Success!');
+	
+	if(errCount==0) {
+		alert("Success!");
+		
+		document.QuoterCalc.reset(); 
+		document.Quoter.reset(); 
+		document.Quoter.Fname.focus(); 
+		document.Quoter.Fname.select();
+	
+	
+	} else {
+		for (var i=0; i < errMsg.length; i++) {
+			ERRtext += (i+1) + ". " + errMsg[i] + "\n";
+		}
+		
+		alert(ERRtext);
+		
+		if (fieldUni == 3) {
+			document.Quoter.Email.focus(); 
+			document.Quoter.Email.select();
+			document.Quoter.Email.style.borderColor = "red";
+			document.Quoter.Phone.style.borderColor = "red";
+		} else if (fieldUni == 2) {
+			document.Quoter.Phone.focus(); 
+			document.Quoter.Phone.select();
+			document.Quoter.Phone.style.borderColor = "red";
+		} else {
+			document.Quoter.Email.focus(); 
+			document.Quoter.Email.select();	
+			document.Quoter.Email.style.borderColor = "red";			
+		}
+			
+		fieldUni=0;
+		errCount=0;	
+	}
 }
 </script>
 
 <script>
-function resetform() {
-	document.getElementById("Quoter").reset();
-	document.documentElement.scrollTop = 0;
+function formatPhone(obj) {
+
+	obj.style.borderColor = "";
+	
+	var numbers = obj.value.replace(/\D/g, ''),
+	char = {0:'',3:'-',6:'-'};
+	
+	obj.value = '';
+	
+	for (var i = 0; i < numbers.length; i++) {
+		obj.value += (char[i]||'') + numbers[i];
+	}
+	
+}	
+</script>
+
+<script>
+function clearFormat(obj) {
+	obj.style.borderColor = "";
+}
+</script>
+
+<script>
+function resetForm() {
+	document.QuoterCalc.reset(); 
+	document.QuoterCalc.AnnualRev.focus(); 
+	document.QuoterCalc.AnnualRev.select();
 }
 </script>
 
@@ -78,18 +122,36 @@ function validateForm() {
 	// Ensure required contact information is filled out. If not, notify user and do not send form
 	var fields = ["Fname","Lname","Email","Phone","organization","title"]
 	var fieldnames = ["First Name","Last Name","Email","Phone","Organization","Title"]
-	var i, l = fields.length;
+	var i, t=0, l = fields.length;
 	var fieldname;
+	var errCount=0;
+	var errMsg=[];
+	var ERRtext="";
+	var fieldUni=0;
 	
 	for (i = 0; i < l; i++) {
 		fieldtype = fields[i];
 		fieldmsg = fieldnames[i];
 		if (document.forms["Quoter"][fieldtype].value === "") {
-			alert("Please enter information in the required fields.");
-			document.Quoter;
+		    errMsg[i] = fieldmsg;
+			ERRtext += (t+1) + ". " + fieldmsg + "\n";
+			document.forms["Quoter"][fieldtype].style.borderColor = "red";
+			errCount += 1;
+			t += 1;
 		}
 	}
-  return true;
+	
+	if (errCount==0) {
+		return true;
+	} else {
+		document.Quoter.Fname.focus(); 
+		
+		alert("The following fields need information.\n" + ERRtext);
+		
+		fieldUni=0;
+		errCount=0;	
+	}
+	
 }
 </script>
 
@@ -295,10 +357,8 @@ function updateCosts() {
 	var financialRate = 206.25;
 	var financialBase = 68.75;
 	
-
-
 	
-	if (document.Quoter.chkFinancialType.checked == true) {		
+	if (document.QuoterCalc.chkFinancialType.checked == true) {		
 		if (optionFinancialType === "Standard") {
 			convertOption = (1 * financialRate) + financialBase;
 			TotalFinancialRate = convertOption * (1 + CoreScale);
@@ -325,7 +385,7 @@ function updateCosts() {
 	if (convertFcstCount === "" || convertFcstCount == 0) {
 		document.getElementById('FcstCountCost').value = '';
 	} else {
-		if (document.Quoter.chkFcstCount.checked == true) {
+		if (document.QuoterCalc.chkFcstCount.checked == true) {
 			convertFcstRate = (convertFcstCount * forecastRate) + forecastBase;
 			TotalFcstRate = convertFcstRate * (1 + CoreScale);
 			document.getElementById('FcstCountCost').value = TotalFcstRate.toFixed(0);
@@ -339,7 +399,7 @@ function updateCosts() {
 	var CFORate = 400;
 	var TotalCFORate = 0;
 	
-	if (document.Quoter.chkCFOServices.checked == true) {
+	if (document.QuoterCalc.chkCFOServices.checked == true) {
 		TotalCFORate = CFORate * (1 + CoreScale);
 		document.getElementById('CFOServicesCost').value = TotalCFORate.toFixed(0);
 	} else {
@@ -353,7 +413,7 @@ function updateCosts() {
 	if (EmpCounter === "" || EmpCounter == 0) {
 		document.getElementById('PayrollAdminCost').value = '';
 	} else {
-		if (document.Quoter.chkPayrollAdmin.checked == true) {
+		if (document.QuoterCalc.chkPayrollAdmin.checked == true) {
 			if (EmpCounter >= 1 && EmpCounter <= 10) {
 				EmpRate = 50;
 			} else if (EmpCounter >= 11 && EmpCounter <= 20) {
@@ -389,7 +449,7 @@ function updateCosts() {
 	if (EmpCounter === "" || EmpCounter == 0) {
 		document.getElementById('EmpExpenseTrackCost').value = '';
 	} else {
-		if (document.Quoter.chkEmpExpenseTrack.checked == true) {
+		if (document.QuoterCalc.chkEmpExpenseTrack.checked == true) {
 			if (EmpCounter >= 1 && EmpCounter <= 10) {
 				EmpExpRate = 50;
 			} else if (EmpCounter >= 11 && EmpCounter <= 20) {
@@ -421,8 +481,8 @@ function updateCosts() {
 	
 	//Update Cash Flow Management
 	var CFRate = 0;
-	if (document.Quoter.chkCashFlow.checked == true) {
-		if (document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true) {
+	if (document.QuoterCalc.chkCashFlow.checked == true) {
+		if (document.QuoterCalc.chkAccountsPayable.checked == true || document.QuoterCalc.chkAccountsRecievable.checked == true) {
 			document.getElementById('CashFlowCost').value = 'Included with AR / AP';
 		} else {
 			CFRate = 200;
@@ -442,7 +502,7 @@ function updateCosts() {
 	if (convertBankRecCount === "" || convertBankRecCount == 0) {
 		document.getElementById('BankRecsCost').value = '';
 	} else {
-		if (document.Quoter.chkBankRecs.checked == true) {
+		if (document.QuoterCalc.chkBankRecs.checked == true) {
 			TotalBankRecRate = BankRecRate * convertBankRecCount;
 			document.getElementById('BankRecsCost').value = TotalBankRecRate.toFixed(0);
 		} else {
@@ -460,7 +520,7 @@ function updateCosts() {
 	if (convertCreditCardCount === "" || convertCreditCardCount == 0) {
 		document.getElementById('CreditCardRecsCost').value = '';
 	} else {
-		if (document.Quoter.chkCreditCardRecs.checked == true) {
+		if (document.QuoterCalc.chkCreditCardRecs.checked == true) {
 			TotalCreditCardRecRate = CreditCardRecRate * convertCreditCardCount;
 			document.getElementById('CreditCardRecsCost').value = TotalCreditCardRecRate.toFixed(0);
 		} else {
@@ -473,7 +533,7 @@ function updateCosts() {
 	var optionAP = document.getElementById('AccountsPayable').value
 	var TotalAPRate = 0;
 	
-	if (document.Quoter.chkAccountsPayable.checked == true) {		
+	if (document.QuoterCalc.chkAccountsPayable.checked == true) {		
 		if (optionAP === "Low") {
 			TotalAPRate = 350 * (1 + AddOnsScale);
 		} else if (optionAP === "Medium") {
@@ -492,7 +552,7 @@ function updateCosts() {
 	var optionAR = document.getElementById('AccountsRecievable').value
 	var TotalARRate = 0;
 	
-	if (document.Quoter.chkAccountsRecievable.checked == true) {	
+	if (document.QuoterCalc.chkAccountsRecievable.checked == true) {	
 		if (optionAR === "Low") {
 			TotalARRate = 350 * (1 + AddOnsScale);
 		} else if (optionAR === "Medium") {
@@ -510,7 +570,7 @@ function updateCosts() {
 	//Update Business Tax
 	var weekTaxRate = 0;
 	
-	if (document.Quoter.chkBusinessTax.checked == true) {		
+	if (document.QuoterCalc.chkBusinessTax.checked == true) {		
 		weekTaxRate = (TaxRate / 52);
 		document.getElementById('BusinessTaxCost').value = weekTaxRate.toFixed(0);
 	} else {
@@ -527,7 +587,7 @@ function updateCosts() {
 	if (IndCount === "" || IndCount == 0) {
 		document.getElementById('IndividualTaxCost').value = '';
 	} else {
-		if (document.Quoter.chkIndividualTax.checked == true) {	
+		if (document.QuoterCalc.chkIndividualTax.checked == true) {	
 			TotalIndRate = (IndCount * IndRate);	
 			document.getElementById('IndividualTaxCost').value = TotalIndRate.toFixed(0);
 		} else {
@@ -544,7 +604,7 @@ function updateCosts() {
 	if (MultiCount === "" || MultiCount == 0) {
 		document.getElementById('MultiStateTaxCost').value = '';
 	} else {
-		if (document.Quoter.chkMultiStateTax.checked == true) {		
+		if (document.QuoterCalc.chkMultiStateTax.checked == true) {		
 			TotalMultiRate = MultiCount * MultiRate;
 			document.getElementById('MultiStateTaxCost').value = TotalMultiRate.toFixed(0);
 		} else {
@@ -561,7 +621,7 @@ function updateCosts() {
 	if (SalesTaxCount === "" || SalesTaxCount == 0) {
 		document.getElementById('SalesTaxCost').value = '';
 	} else {
-		if (document.Quoter.chkSalesTax.checked == true) {		
+		if (document.QuoterCalc.chkSalesTax.checked == true) {		
 			TotalSalesTaxRate = SalesTaxCount * SalesTaxRate;
 			document.getElementById('SalesTaxCost').value = TotalSalesTaxRate.toFixed(0);
 		} else {
@@ -578,7 +638,7 @@ function updateCosts() {
 	if (PPTCount === "" || PPTCount == 0) {
 		document.getElementById('PersonalPropertyTaxCost').value = '';
 	} else {
-		if (document.Quoter.chkPersonalPropertyTax.checked == true) {	
+		if (document.QuoterCalc.chkPersonalPropertyTax.checked == true) {	
 			TotalPPTRate = PPTCount * PPTRate;
 			document.getElementById('PersonalPropertyTaxCost').value = TotalPPTRate.toFixed(0);
 		} else {
@@ -593,7 +653,7 @@ function updateCosts() {
 	if (count1099 === "" || count1099 == 0) {
 		document.getElementById('1099FilingsCost').value = '';
 	} else {
-		if (document.Quoter.chk1099Filings.checked == true) {	
+		if (document.QuoterCalc.chk1099Filings.checked == true) {	
 			if (count1099 <10){
 				rate1099 = (150/52);
 			} else {
@@ -612,14 +672,14 @@ function updateCosts() {
 	var TotalWeeklyFee = 0;
 	var AnnualizeFee = 0;
 	
-	if (document.Quoter.chkFinancialType.checked == true || document.Quoter.chkFcstCount.checked == true ||
-		document.Quoter.chkCFOServices.checked == true || document.Quoter.chkPayrollAdmin.checked == true ||
-		document.Quoter.chkEmpExpenseTrack.checked == true || document.Quoter.chkCashFlow.checked == true ||
-		document.Quoter.chkBankRecs.checked == true || document.Quoter.chkCreditCardRecs.checked == true ||
-		document.Quoter.chkAccountsPayable.checked == true || document.Quoter.chkAccountsRecievable.checked == true ||
-		document.Quoter.chkBusinessTax.checked == true || document.Quoter.chkIndividualTax.checked == true ||
-		document.Quoter.chkMultiStateTax.checked == true || document.Quoter.chkSalesTax.checked == true ||
-		document.Quoter.chkPersonalPropertyTax.checked == true || document.Quoter.chk1099Filings.checked == true) {
+	if (document.QuoterCalc.chkFinancialType.checked == true || document.QuoterCalc.chkFcstCount.checked == true ||
+		document.QuoterCalc.chkCFOServices.checked == true || document.QuoterCalc.chkPayrollAdmin.checked == true ||
+		document.QuoterCalc.chkEmpExpenseTrack.checked == true || document.QuoterCalc.chkCashFlow.checked == true ||
+		document.QuoterCalc.chkBankRecs.checked == true || document.QuoterCalc.chkCreditCardRecs.checked == true ||
+		document.QuoterCalc.chkAccountsPayable.checked == true || document.QuoterCalc.chkAccountsRecievable.checked == true ||
+		document.QuoterCalc.chkBusinessTax.checked == true || document.QuoterCalc.chkIndividualTax.checked == true ||
+		document.QuoterCalc.chkMultiStateTax.checked == true || document.QuoterCalc.chkSalesTax.checked == true ||
+		document.QuoterCalc.chkPersonalPropertyTax.checked == true || document.QuoterCalc.chk1099Filings.checked == true) {
 		
 		TotalWeeklyFee = TotalFinancialRate + TotalFcstRate + TotalCFORate + EmpRate + EmpExpRate + CFRate + TotalBankRecRate + TotalCreditCardRecRate + TotalAPRate + TotalARRate + weekTaxRate + 
 							TotalIndRate + TotalMultiRate + TotalSalesTaxRate + TotalPPTRate + rate1099;
@@ -655,7 +715,7 @@ function updateCosts() {
 </script>
 
 </head>
-<body onload="document.Quoter.reset();">
+<body onload="document.Quoter.reset();document.QuoterCalc.reset();">
     <div class="mainbox">
       <form name="Quoter" id="Quoter" action="/">
 	  <div class="header">
@@ -670,11 +730,11 @@ function updateCosts() {
 		<div class="item">
 			<div class="form-item">
 				<label for="Fname"><b>First Name <font color="red">*</font></b></label>
-				<input type="text" name="Fname" id="Fname" placeholder="First Name" required />
+				<input type="text" name="Fname" id="Fname" placeholder="First Name" onblur="clearFormat(this);" required />
 			</div>
 			<div class="form-item">
 				<label for="Lname"><b>Last Name <font color="red">*</font></b></label>
-				<input type="text" name="Lname" id="Lname" placeholder="Last Name" required />
+				<input type="text" name="Lname" id="Lname" placeholder="Last Name" onblur="clearFormat(this);" required />
 			</div>
 		</div>
 		
@@ -684,11 +744,11 @@ function updateCosts() {
 		<div class="item">
 			<div class="form-item">
 				<label for="Email"><b>Email <font color="red">*</font></b></label>
-				<input type="text" name="Email" id="Email" placeholder="Email" required />
+				<input type="text" name="Email" id="Email" placeholder="Email" onblur="clearFormat(this);" required />
 			</div>
 			<div class="form-item">
 				<label for="Phone"><b>Phone <font color="red">*</font></b></label>
-				<input type="text" name="Phone" id="Phone" placeholder="Phone" required />
+				<input type="text" name="Phone" id="Phone" placeholder="Phone" onblur="formatPhone(this);" required />
 			</div>
 		</div>
 
@@ -697,11 +757,11 @@ function updateCosts() {
 		<div class="item">
 			<div class="form-item">
 				<label for="organization"><b>Organization <font color="red">*</font></b></label>
-				<input type="text" name="organization" id="organization" placeholder="Organization" required />
+				<input type="text" name="organization" id="organization" placeholder="Organization" onblur="clearFormat(this);" required />
 			</div>
 			<div class="form-item">
 				<label for="title"><b>Title <font color="red">*</font></b></label>
-				<input type="text" name="title" id="title" placeholder="Title" required />
+				<input type="text" name="title" id="title" placeholder="Title" onblur="clearFormat(this);" required />
 			</div>
 		</div>
 
@@ -773,8 +833,10 @@ function updateCosts() {
             </select>
           </div>
         </div>
-
-		
+	</form>
+	</div>
+	<center>
+	<form name="QuoterCalc" id="QuoterCalc" action="#">
 		<div class="innerbox">
 			<div class="header">
 				<h2>Virtual CFO Service Quote Criteria</h2>
@@ -782,14 +844,14 @@ function updateCosts() {
 			
 			<div class="item">
 				<div class="form2-item">
-					<label for="AnnualRev"><b>Annual Revenue: <font color="red">*</font></b></label>
-					<input type="text" name="AnnualRev" id="AnnualRev" style="width: 150px;" onkeyup="updateCosts()" required />
+					<label for="AnnualRev" style="text-align:left;"><b>Annual Revenue: <font color="red">*</font></b></label>
+					<input type="text" name="AnnualRev" id="AnnualRev" style="width: 150px;" onkeyup="updateCosts()" />
 				</div>
 			</div>
 			
 			<div class="item">
 				<div class="form2-item">
-					<label for="ServiceType"><b>Service Type: <font color="red">*</font></b></label>
+					<label for="ServiceType" style="text-align:left;"><b>Service Type: <font color="red">*</font></b></label>
 					<select name="ServiceType" id="ServiceType" autocomplete="off" onchange="updateCosts()" required>
 					<option value="CFO" selected>Virtual CFO Services</option>
 					<option value="Controller">Controllership Services</option>
@@ -802,8 +864,8 @@ function updateCosts() {
 			
 			<div class="item">
 				<div class="form2-item">
-					<label for="EmpCount"><b>Number of Employees and/or Contractors: <font color="red">*</font></b></label>
-					<input type="text" name="EmpCount" id="EmpCount" style="width: 50%;" onkeyup="updateCosts()" required />
+					<label for="EmpCount" style="text-align:left;"><b>Number of Employees and/or Contractors: <font color="red">*</font></b></label>
+					<input type="text" name="EmpCount" id="EmpCount" style="width: 50%; float:left" onkeyup="updateCosts()" />
 				</div>
 			</div>
 			
@@ -1092,20 +1154,20 @@ function updateCosts() {
 	
 		
 			<div class="item">
-			<p><b>Any other information you want to provide?</b></p>
+			<p align="left"><b>&emsp;Any other information you want to provide?</b></p>
 			<textarea rows="5"></textarea>
 			</div>
 			
-			
+	
 
+		</div>
+			<div class="btn-block">
+				<button type="button" onclick="userSubmit()">SEND</button>
+				<button type="button" onclick="resetForm()">RESET</button>
+			</div>			
 		
-		</div>
-		<div class="btn-block">
-			<button type="submit" onchange="userSubmit()">SEND</button>
-			<button type="submit" onchange="resetform()">RESET</button>
-		</div>
 		</form>
-	</div>
+		</center>
 	<br>
 	</body>
 </html>
