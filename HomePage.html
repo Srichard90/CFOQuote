@@ -120,8 +120,8 @@ function resetForm() {
 <script language="JavaScript">
 function validateForm() {
 	// Ensure required contact information is filled out. If not, notify user and do not send form
-	var fields = ["Fname","Lname","Email","Phone","organization","title"]
-	var fieldnames = ["First Name","Last Name","Email","Phone","Organization","Title"]
+	var fields = ["Fname","Lname","Email","Phone","website"]
+	var fieldnames = ["First Name","Last Name","Email","Phone","Website"]
 	var i, t=0, l = fields.length;
 	var fieldname;
 	var errCount=0;
@@ -160,189 +160,152 @@ function updateCosts() {
 	
 	//Determine Revenue Range and set scale factors
 	var annualRev = document.getElementById('AnnualRev').value;
-	var EmpCounter = document.getElementById('EmpCount').value;
 	var TaxRate = 0;
 	var CoreScale = 0;
 	var AddOnsScale = 0;
-	var RevRng0 = 0;
-	var RevRng1 = 100000;
-	var RevRng2 = 300000;
-	var RevRng3 = 600000;
-	var RevRng4 = 900000;
-	var RevRng5 = 1200000;
-	var RevRng6 = 1500000;
-	var RevRng7 = 1800000;
-	var RevRng8 = 2100000;
-	var RevRng9 = 2500000;
-	var RevRng10 = 3000000;
-	var RevRng11 = 3500000;
-	var RevRng12 = 4000000;
-	var RevRng13 = 4500000;
-	var RevRng14 = 5000000;
-	var RevRng15 = 6000000;
-	var RevRng16 = 7000000;
-	var RevRng17 = 8000000;
-	var RevRng18 = 9000000;
-	var RevRng19 = 10000000;
-	var RevRng20 = 12500000;
-	var RevRng21 = 15000000;
-	var RevRng22 = 17500000;
-	var RevRng23 = 20000000;
-	var RevRng24 = 22500000;
-	var RevRng25 = 25000000;
-	var RevRng26 = 27500000;
-	var RevRng27 = 30000000;
-	var RevRng28 = 32500000;
-	var RevRng29 = 35000000;
-	var RevRng30 = 37500000;
-	var RevRng31 = 40000000;
-	var RevRng32 = 42500000;
-	var RevRng33 = 45000000;
-	var RevRng34 = 47500000;
-	var RevRng35 = 50000000;
-	
+
 		
-	if (annualRev >= RevRng0 && annualRev < RevRng1) {
+	if (annualRev === "RevRng0") {
 		TaxRate = 600;
 		CoreScale = -Math.abs(-0.25);
 		AddOnsScale = -Math.abs(-0.25);
-	} else if (annualRev >= RevRng1 && annualRev < RevRng2) {
+	} else if (annualRev === "RevRng1") {
 		TaxRate = 600;
 		CoreScale = -Math.abs(-0.25);
 		AddOnsScale = -Math.abs(-0.25);
-	} else if (annualRev >= RevRng2 && annualRev < RevRng3) {
+	} else if (annualRev === "RevRng2") {
 		TaxRate = 900;
 		CoreScale = -Math.abs(-0.25);
 		AddOnsScale = -Math.abs(-0.25);
-	} else if (annualRev >= RevRng3 && annualRev < RevRng4) {
+	} else if (annualRev === "RevRng3") {
 		TaxRate = 1200;
 		CoreScale = -Math.abs(-0.25);
 		AddOnsScale = -Math.abs(-0.25);
-	} else if (annualRev >= RevRng4 && annualRev < RevRng5) {
+	} else if (annualRev === "RevRng4") {
 		TaxRate = 1800;
 		CoreScale = -Math.abs(-0.20);
 		AddOnsScale = -Math.abs(-0.20);
-	} else if (annualRev >= RevRng5 && annualRev < RevRng6) {
+	} else if (annualRev === "RevRng5") {
 		TaxRate = 2200;
 		CoreScale = -Math.abs(-0.05);
 		AddOnsScale = -Math.abs(-0.05);
-	} else if (annualRev >= RevRng6 && annualRev < RevRng7) {
+	} else if (annualRev === "RevRng6") {
 		TaxRate = 2600;
 		CoreScale = -Math.abs(-0.05);
 		AddOnsScale = -Math.abs(-0.05);
-	} else if (annualRev >= RevRng7 && annualRev < RevRng8) {
+	} else if (annualRev === "RevRng7") {
 		TaxRate = 2900;
 		CoreScale = -Math.abs(-0.05);
 		AddOnsScale = -Math.abs(-0.05);
-	} else if (annualRev >= RevRng8 && annualRev < RevRng9) {
+	} else if (annualRev === "RevRng8") {
 		TaxRate = 3200;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng9 && annualRev < RevRng10) {
+	} else if (annualRev === "RevRng9") {
 		TaxRate = 3500;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng10 && annualRev < RevRng11) {
+	} else if (annualRev === "RevRng10") {
 		TaxRate = 3800;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng11 && annualRev < RevRng12) {
+	} else if (annualRev === "RevRng11") {
 		TaxRate = 4100;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng12 && annualRev < RevRng13) {
+	} else if (annualRev === "RevRng12") {
 		TaxRate = 4400;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng13 && annualRev < RevRng14) {
+	} else if (annualRev === "RevRng13") {
 		TaxRate = 4700;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng14 && annualRev < RevRng15) {
+	} else if (annualRev === "RevRng14") {
 		TaxRate = 5000;
 		CoreScale = 0;
 		AddOnsScale = 0;
-	} else if (annualRev >= RevRng15 && annualRev < RevRng16) {
+	} else if (annualRev === "RevRng15") {
 		TaxRate = 5500;
 		CoreScale = 0.05;
 		AddOnsScale = 0.05;
-	} else if (annualRev >= RevRng16 && annualRev < RevRng17) {
+	} else if (annualRev === "RevRng16") {
 		TaxRate = 6000;
 		CoreScale = 0.05;
 		AddOnsScale = 0.05;
-	} else if (annualRev >= RevRng17 && annualRev < RevRng18) {
+	} else if (annualRev === "RevRng17") {
 		TaxRate = 6500;
 		CoreScale = 0.10;
 		AddOnsScale = 0.10;
-	} else if (annualRev >= RevRng18 && annualRev < RevRng19) {
+	} else if (annualRev === "RevRng18") {
 		TaxRate = 7000;
 		CoreScale = 0.10;
 		AddOnsScale = 0.10;
-	} else if (annualRev >= RevRng19 && annualRev < RevRng20) {
+	} else if (annualRev === "RevRng19") {
 		TaxRate = 7500;
 		CoreScale = 0.15;
 		AddOnsScale = 0.15;
-	} else if (annualRev >= RevRng20 && annualRev < RevRng21) {
+	} else if (annualRev === "RevRng20") {
 		TaxRate = 8700;
 		CoreScale = 0.15;
 		AddOnsScale = 0.15;
-	} else if (annualRev >= RevRng21 && annualRev < RevRng22) {
+	} else if (annualRev === "RevRng21") {
 		TaxRate = 9900;
 		CoreScale = 0.15;
 		AddOnsScale = 0.15;
-	} else if (annualRev >= RevRng22 && annualRev < RevRng23) {
+	} else if (annualRev === "RevRng22") {
 		TaxRate = 11100;
 		CoreScale = 0.15;
 		AddOnsScale = 0.15;
-	} else if (annualRev >= RevRng23 && annualRev < RevRng24) {
+	} else if (annualRev === "RevRng23") {
 		TaxRate = 12300;
 		CoreScale = 0.20;
 		AddOnsScale = 0.25;
-	} else if (annualRev >= RevRng24 && annualRev < RevRng25) {
+	} else if (annualRev === "RevRng24") {
 		TaxRate = 13500;
 		CoreScale = 0.20;
 		AddOnsScale = 0.50;
-	} else if (annualRev >= RevRng25 && annualRev < RevRng26) {
+	} else if (annualRev === "RevRng25") {
 		TaxRate = 14700;
 		CoreScale = 0.25;
 		AddOnsScale = 0.75;
-	} else if (annualRev >= RevRng26 && annualRev < RevRng27) {
+	} else if (annualRev === "RevRng26") {
 		TaxRate = 15900;
 		CoreScale = 0.25;
 		AddOnsScale = 1.00;
-	} else if (annualRev >= RevRng27 && annualRev < RevRng28) {
+	} else if (annualRev === "RevRng27") {
 		TaxRate = 17100;
 		CoreScale = 0.25;
 		AddOnsScale = 1.25;
-	} else if (annualRev >= RevRng28 && annualRev < RevRng29) {
+	} else if (annualRev === "RevRng28") {
 		TaxRate = 18300;
 		CoreScale = 0.30;
 		AddOnsScale = 1.50;
-	} else if (annualRev >= RevRng29 && annualRev < RevRng30) {
+	} else if (annualRev === "RevRng29") {
 		TaxRate = 19500;
 		CoreScale = 0.30;
 		AddOnsScale = 1.75;
-	} else if (annualRev >= RevRng30 && annualRev < RevRng31) {
+	} else if (annualRev === "RevRng30") {
 		TaxRate = 20700;
 		CoreScale = 0.30;
 		AddOnsScale = 2.00;
-	} else if (annualRev >= RevRng31 && annualRev < RevRng32) {
+	} else if (annualRev === "RevRng31") {
 		TaxRate = 21900;
 		CoreScale = 0.40;
 		AddOnsScale = 2.25;
-	} else if (annualRev >= RevRng32 && annualRev < RevRng33) {
+	} else if (annualRev === "RevRng32") {
 		TaxRate = 23100;
 		CoreScale = 0.40;
 		AddOnsScale = 2.50;
-	} else if (annualRev >= RevRng33 && annualRev < RevRng34) {
+	} else if (annualRev === "RevRng33") {
 		TaxRate = 24300;
 		CoreScale = 0.40;
 		AddOnsScale = 2.75;
-	} else if (annualRev >= RevRng34 && annualRev < RevRng35) {
+	} else if (annualRev === "RevRng34") {
 		TaxRate = 25500;
 		CoreScale = 0.50;
 		AddOnsScale = 3.00;
-	} else if (annualRev >= RevRng35) {
+	} else if (annualRev === "RevRng35") {
 		TaxRate = 26700;
 		CoreScale = 0.50;
 		AddOnsScale = 3.25;
@@ -369,9 +332,8 @@ function updateCosts() {
 			convertOption = (2 * financialRate) + financialBase;
 			TotalFinancialRate = convertOption * (1 + CoreScale);
 		} 
-		document.getElementById('FinancialTypeCost').value = TotalFinancialRate.toFixed(0);
 	} else {
-		document.getElementById('FinancialTypeCost').value = '';
+		TotalFinancialRate = 0;
 	}
 	
 	
@@ -382,17 +344,17 @@ function updateCosts() {
 	var forecastRate = 125;
 	var forecastBase = 125;
 	
-	if (convertFcstCount === "" || convertFcstCount == 0) {
-		document.getElementById('FcstCountCost').value = '';
-	} else {
-		if (document.QuoterCalc.chkFcstCount.checked == true) {
+	if (document.QuoterCalc.chkFcstCount.checked == true) {
+		if (convertFcstCount == 0) {
+			TotalFcstRate = 0;
+		} else {
 			convertFcstRate = (convertFcstCount * forecastRate) + forecastBase;
 			TotalFcstRate = convertFcstRate * (1 + CoreScale);
-			document.getElementById('FcstCountCost').value = TotalFcstRate.toFixed(0);
-		} else {
-			document.getElementById('FcstCountCost').value = '';
 		}
+	} else {
+		TotalFcstRate = 0;
 	}
+
 	
 	
 	//Update Virtual CFO Services
@@ -401,81 +363,84 @@ function updateCosts() {
 	
 	if (document.QuoterCalc.chkCFOServices.checked == true) {
 		TotalCFORate = CFORate * (1 + CoreScale);
-		document.getElementById('CFOServicesCost').value = TotalCFORate.toFixed(0);
 	} else {
-		document.getElementById('CFOServicesCost').value = '';
+		TotalCFORate = 0;
 	}
 	
 	
 	//Update Payroll Administration
+	//Update Emploee Expense Tracking
+	var EmpCounter = document.getElementById('EmpCount').value;
+	var payrollType = document.getElementById('PayrollType').value;
+	var payTypeFactor = 0;
+	var EmpExpRate = 0;
 	var EmpRate = 0;
-		
-	if (EmpCounter === "" || EmpCounter == 0) {
-		document.getElementById('PayrollAdminCost').value = '';
-	} else {
-		if (document.QuoterCalc.chkPayrollAdmin.checked == true) {
-			if (EmpCounter >= 1 && EmpCounter <= 10) {
-				EmpRate = 50;
-			} else if (EmpCounter >= 11 && EmpCounter <= 20) {
-				EmpRate = 70;
-			} else if (EmpCounter >= 21 && EmpCounter <= 30) {
-				EmpRate = 90;
-			} else if (EmpCounter >= 31 && EmpCounter <= 40) {
-				EmpRate = 110;
-			} else if (EmpCounter >= 41 && EmpCounter <= 50) {
-				EmpRate = 130;
-			} else if (EmpCounter >= 51 && EmpCounter <= 100) {
-				EmpRate = 175;
-			} else if (EmpCounter >= 101 && EmpCounter <= 150) {
-				EmpRate = 200;
-			} else if (EmpCounter >= 151 && EmpCounter <= 200) {
-				EmpRate = 225;
-			} else if (EmpCounter >= 201 && EmpCounter <= 250) {
-				EmpRate = 250;
-			} else if (EmpCounter >= 251) {
-				EmpRate = 300;
-			}
-			
-			document.getElementById('PayrollAdminCost').value = EmpRate.toFixed(0);
-		} else {
-			document.getElementById('PayrollAdminCost').value = '';
-		}
+	
+	if (payrollType === "PayrollType0") {
+		payTypeFactor = 0;
+	} else if (payrollType === "PayrollType1") {
+		payTypeFactor = 2;
+	} else if (payrollType === "PayrollType2") {
+		payTypeFactor = 1;
+	} else if (payrollType === "PayrollType3") {
+		payTypeFactor = 1;
+	} else if (payrollType === "PayrollType4") {
+		payTypeFactor = 0.5;
 	}
 	
-	
-	//Update Emploee Expense Tracking
-	var EmpExpRate = 0;
-	
-	if (EmpCounter === "" || EmpCounter == 0) {
-		document.getElementById('EmpExpenseTrackCost').value = '';
-	} else {
-		if (document.QuoterCalc.chkEmpExpenseTrack.checked == true) {
-			if (EmpCounter >= 1 && EmpCounter <= 10) {
-				EmpExpRate = 50;
-			} else if (EmpCounter >= 11 && EmpCounter <= 20) {
-				EmpExpRate = 70;
-			} else if (EmpCounter >= 21 && EmpCounter <= 30) {
-				EmpExpRate = 90;
-			} else if (EmpCounter >= 31 && EmpCounter <= 40) {
-				EmpExpRate = 110;
-			} else if (EmpCounter >= 41 && EmpCounter <= 50) {
-				EmpExpRate = 130;
-			} else if (EmpCounter >= 51 && EmpCounter <= 100) {
-				EmpExpRate = 175;
-			} else if (EmpCounter >= 101 && EmpCounter <= 150) {
-				EmpExpRate = 200;
-			} else if (EmpCounter >= 151 && EmpCounter <= 200) {
-				EmpExpRate = 225;
-			} else if (EmpCounter >= 201 && EmpCounter <= 250) {
-				EmpExpRate = 250;
-			} else if (EmpCounter >= 251) {
-				EmpExpRate = 300;
-			}
-			
-			document.getElementById('EmpExpenseTrackCost').value = EmpExpRate.toFixed(0);
-		} else {
-			document.getElementById('EmpExpenseTrackCost').value = '';
+	if (document.QuoterCalc.chkPayrollAdmin.checked == true) {
+		if (EmpCounter === "EmpRng0") {
+			EmpRate = payTypeFactor * 50;
+		} else if (EmpCounter === "EmpRng1") {
+			EmpRate = payTypeFactor * 70;
+		} else if (EmpCounter === "EmpRng2") {
+			EmpRate = payTypeFactor * 90;
+		} else if (EmpCounter === "EmpRng3") {
+			EmpRate = payTypeFactor * 110;
+		} else if (EmpCounter === "EmpRng4") {
+			EmpRate = payTypeFactor * 130;
+		} else if (EmpCounter === "EmpRng5") {
+			EmpRate = payTypeFactor * 175;
+		} else if (EmpCounter === "EmpRng6") {
+			EmpRate = payTypeFactor * 200;
+		} else if (EmpCounter === "EmpRng7") {
+			EmpRate = payTypeFactor * 225;
+		} else if (EmpCounter === "EmpRng8") {
+			EmpRate = payTypeFactor * 250;
+		} else if (EmpCounter === "EmpRng9") {
+			EmpRate = payTypeFactor * 300;
 		}
+	} else {
+		payTypeFactor = 0;
+		EmpRate = 0;
+	}
+
+	
+	if (document.QuoterCalc.chkEmpExpenseTrack.checked == true) {
+		if (EmpCounter === "EmpRng0") {
+			EmpExpRate = payTypeFactor * 50;
+		} else if (EmpCounter === "EmpRng1") {
+			EmpExpRate = payTypeFactor * 70;
+		} else if (EmpCounter === "EmpRng2") {
+			EmpExpRate = payTypeFactor * 90;
+		} else if (EmpCounter === "EmpRng3") {
+			EmpExpRate = payTypeFactor * 110;
+		} else if (EmpCounter === "EmpRng4") {
+			EmpExpRate = payTypeFactor * 130;
+		} else if (EmpCounter === "EmpRng5") {
+			EmpExpRate = payTypeFactor * 175;
+		} else if (EmpCounter === "EmpRng6") {
+			EmpExpRate = payTypeFactor * 200;
+		} else if (EmpCounter === "EmpRng7") {
+			EmpExpRate = payTypeFactor * 225;
+		} else if (EmpCounter === "EmpRng8") {
+			EmpExpRate = payTypeFactor * 250;
+		} else if (EmpCounter === "EmpRng9") {
+			EmpExpRate = payTypeFactor * 300;
+		}
+	} else {
+		payTypeFactor = 0;
+		EmpExpRate = 0;
 	}
 	
 	
@@ -483,33 +448,25 @@ function updateCosts() {
 	var CFRate = 0;
 	if (document.QuoterCalc.chkCashFlow.checked == true) {
 		if (document.QuoterCalc.chkAccountsPayable.checked == true || document.QuoterCalc.chkAccountsRecievable.checked == true) {
-			document.getElementById('CashFlowCost').value = 'Included with AR / AP';
+			CFRate = 0;
 		} else {
 			CFRate = 200;
-			document.getElementById('CashFlowCost').value = CFRate.toFixed(0);
 		}
 	} else {
-		document.getElementById('CashFlowCost').value = '';
+		CFRate = 0;
 	}
 	
 
-	
 	//Update Bank Reconciliations
 	var convertBankRecCount = document.getElementById('BankRecs').value;
 	var BankRecRate = 25;
 	var TotalBankRecRate = 0;
 	
-	if (convertBankRecCount === "" || convertBankRecCount == 0) {
-		document.getElementById('BankRecsCost').value = '';
+	if (document.QuoterCalc.chkBankRecs.checked == true) {
+		TotalBankRecRate = BankRecRate * convertBankRecCount;
 	} else {
-		if (document.QuoterCalc.chkBankRecs.checked == true) {
-			TotalBankRecRate = BankRecRate * convertBankRecCount;
-			document.getElementById('BankRecsCost').value = TotalBankRecRate.toFixed(0);
-		} else {
-			document.getElementById('BankRecsCost').value = '';
-		}
+		TotalBankRecRate = 0;
 	}
-	
 	
 	
 	//Update Credit Card Reconciliations
@@ -517,16 +474,12 @@ function updateCosts() {
 	var CreditCardRecRate = 25;
 	var TotalCreditCardRecRate = 0;
 	
-	if (convertCreditCardCount === "" || convertCreditCardCount == 0) {
-		document.getElementById('CreditCardRecsCost').value = '';
+	if (document.QuoterCalc.chkCreditCardRecs.checked == true) {
+		TotalCreditCardRecRate = CreditCardRecRate * convertCreditCardCount;
 	} else {
-		if (document.QuoterCalc.chkCreditCardRecs.checked == true) {
-			TotalCreditCardRecRate = CreditCardRecRate * convertCreditCardCount;
-			document.getElementById('CreditCardRecsCost').value = TotalCreditCardRecRate.toFixed(0);
-		} else {
-			document.getElementById('CreditCardRecsCost').value = '';
-		}
+		TotalCreditCardRecRate = 0;
 	}
+	
 	
 	
 	//Update Accounts Payable
@@ -541,9 +494,8 @@ function updateCosts() {
 		} else if (optionAP === "High") {
 			TotalAPRate = 650 * (1 + AddOnsScale);
 		} 
-		document.getElementById('AccountsPayableCost').value = TotalAPRate.toFixed(0);
 	} else {
-		document.getElementById('AccountsPayableCost').value = '';
+		TotalAPRate = 0;
 	}	
 	
 	
@@ -560,9 +512,8 @@ function updateCosts() {
 		} else if (optionAR === "High") {
 			TotalARRate = 650 * (1 + AddOnsScale);
 		} 
-		document.getElementById('AccountsRecievableCost').value = TotalARRate.toFixed(0);
 	} else {
-		document.getElementById('AccountsRecievableCost').value = '';
+		TotalARRate = 0;
 	}	
 	
 	
@@ -572,9 +523,8 @@ function updateCosts() {
 	
 	if (document.QuoterCalc.chkBusinessTax.checked == true) {		
 		weekTaxRate = (TaxRate / 52);
-		document.getElementById('BusinessTaxCost').value = weekTaxRate.toFixed(0);
 	} else {
-		document.getElementById('BusinessTaxCost').value = '';
+		weekTaxRate = 0;
 	}	
 	
 	
@@ -584,16 +534,12 @@ function updateCosts() {
 	var IndRate = 6;
 	var TotalIndRate = 0;
 		
-	if (IndCount === "" || IndCount == 0) {
-		document.getElementById('IndividualTaxCost').value = '';
+	if (document.QuoterCalc.chkIndividualTax.checked == true) {	
+		TotalIndRate = (IndCount * IndRate);	
 	} else {
-		if (document.QuoterCalc.chkIndividualTax.checked == true) {	
-			TotalIndRate = (IndCount * IndRate);	
-			document.getElementById('IndividualTaxCost').value = TotalIndRate.toFixed(0);
-		} else {
-			document.getElementById('IndividualTaxCost').value = '';	
-		}
+		TotalIndRate = 0;	
 	}
+	
 
 	
 	//Update Multi-State Tax
@@ -601,16 +547,12 @@ function updateCosts() {
 	var MultiRate = 4;
 	var TotalMultiRate = 0;
 	
-	if (MultiCount === "" || MultiCount == 0) {
-		document.getElementById('MultiStateTaxCost').value = '';
+	if (document.QuoterCalc.chkMultiStateTax.checked == true) {		
+		TotalMultiRate = MultiCount * MultiRate;
 	} else {
-		if (document.QuoterCalc.chkMultiStateTax.checked == true) {		
-			TotalMultiRate = MultiCount * MultiRate;
-			document.getElementById('MultiStateTaxCost').value = TotalMultiRate.toFixed(0);
-		} else {
-			document.getElementById('MultiStateTaxCost').value = '';	
-		}
+		TotalMultiRate = 0;	
 	}
+	
 	
 	
 	//Update Sales Tax
@@ -618,16 +560,12 @@ function updateCosts() {
 	var SalesTaxRate = 4;
 	var TotalSalesTaxRate = 0;
 
-	if (SalesTaxCount === "" || SalesTaxCount == 0) {
-		document.getElementById('SalesTaxCost').value = '';
+	if (document.QuoterCalc.chkSalesTax.checked == true) {		
+		TotalSalesTaxRate = SalesTaxCount * SalesTaxRate;
 	} else {
-		if (document.QuoterCalc.chkSalesTax.checked == true) {		
-			TotalSalesTaxRate = SalesTaxCount * SalesTaxRate;
-			document.getElementById('SalesTaxCost').value = TotalSalesTaxRate.toFixed(0);
-		} else {
-			document.getElementById('SalesTaxCost').value = '';	
-		}
+		TotalSalesTaxRate = 0;	
 	}
+	
 	
 	
 	//Update Personal Property Tax
@@ -635,37 +573,31 @@ function updateCosts() {
 	var PPTRate = 4;
 	var TotalPPTRate = 0;
 	
-	if (PPTCount === "" || PPTCount == 0) {
-		document.getElementById('PersonalPropertyTaxCost').value = '';
+	if (document.QuoterCalc.chkPersonalPropertyTax.checked == true) {	
+		TotalPPTRate = PPTCount * PPTRate;
 	} else {
-		if (document.QuoterCalc.chkPersonalPropertyTax.checked == true) {	
-			TotalPPTRate = PPTCount * PPTRate;
-			document.getElementById('PersonalPropertyTaxCost').value = TotalPPTRate.toFixed(0);
-		} else {
-			document.getElementById('PersonalPropertyTaxCost').value = '';	
-		}
+		TotalPPTRate = 0;
 	}
+	
 	
 	//Update 1099s
 	var count1099 = document.getElementById('1099Filings').value
 	var rate1099 = 0;
 	
-	if (count1099 === "" || count1099 == 0) {
-		document.getElementById('1099FilingsCost').value = '';
-	} else {
-		if (document.QuoterCalc.chk1099Filings.checked == true) {	
-			if (count1099 <10){
+	if (document.QuoterCalc.chk1099Filings.checked == true) {	
+		if(count1099 == 0) {
+			rate1099 = 0;
+		} else {
+			if (count1099 < 10){
 				rate1099 = (150/52);
 			} else {
 				rate1099 = ((count1099/10*50+150)/52);
 			}
-
-			document.getElementById('1099FilingsCost').value = rate1099.toFixed(0);
-			
-		} else {
-			document.getElementById('1099FilingsCost').value = '';	
 		}
-	}	
+	} else {
+		rate1099 = 0;	
+	}
+	
 	
 	
 	//Calculate Weekly and Annual Fees
@@ -689,7 +621,7 @@ function updateCosts() {
 		document.getElementById('TotalAnnualFee').value = AnnualizeFee.toFixed(0);
 	
 	
-		//Get Service Type and calculate Onboarding Fee
+		//Determine Service Type and calculate Onboarding Fee
 		var convertServiceRate = document.getElementById('ServiceType').value;
 		var ServiceFactor = 0;
 		if (convertServiceRate === "CFO") {
@@ -702,6 +634,7 @@ function updateCosts() {
 	
 		var OnboardingFee = ServiceFactor * TotalWeeklyFee;
 		document.getElementById('OnboardingCost').value = OnboardingFee.toFixed(0);
+		
 		
 	} else {
 		document.getElementById('TotalWeeklyCost').value = '';
@@ -756,83 +689,16 @@ function updateCosts() {
 
 		<div class="item">
 			<div class="form-item">
-				<label for="organization"><b>Organization <font color="red">*</font></b></label>
-				<input type="text" name="organization" id="organization" placeholder="Organization" onblur="clearFormat(this);" required />
+				<label for="website"><b>Company Website <font color="red">*</font></b></label>
+				<input type="text" name="website" id="website" placeholder="Company Website" onblur="clearFormat(this);" required />
 			</div>
 			<div class="form-item">
-				<label for="title"><b>Title <font color="red">*</font></b></label>
-				<input type="text" name="title" id="title" placeholder="Title" onblur="clearFormat(this);" required />
+
 			</div>
 		</div>
 
 		<br style="clear:both;" />
 
-
-        <div class="item">
-          <p><b>Address (optional)</b></p>
-          <input type="text" name="address1" id="address1" placeholder="Street address"/>
-          <input type="text" name="address2" id="address2" placeholder="Street address line 2"/>
-          <div class="city-item">
-            <input type="text" name="city" id="city" placeholder="City" />
-            <input type="text" name="state" id="state" placeholder="State / Region" />
-            <input type="text" name="zip" id="zip" placeholder="Postal / Zip code" />
-            <select name="country" id="country" autocomplete="off">
-			
-	<option value="">- Please Select -</option>	<option value="2" selected>United States</option> <option value="3">Afghanistan</option>	<option value="241">Åland Islands</option>	<option value="4">Albania</option>	
-	<option value="5">Algeria</option> <option value="6">American Samoa</option>	<option value="7">Andorra</option>
-	<option value="8">Angola</option>	<option value="9">Anguilla</option>	<option value="10">Antarctica</option>  <option value="242">Antigua and Barbuda</option>  <option value="12">Argentina</option>
-	<option value="13">Armenia</option>  <option value="14">Aruba</option>  <option value="15">Australia</option>  <option value="16">Austria</option>  <option value="17">Azerbaijan</option>
-	<option value="18">Bahamas</option>  <option value="19">Bahrain</option>  <option value="20">Bangladesh</option>  <option value="21">Barbados</option>  <option value="22">Belarus</option>
-	<option value="23">Belgium</option>  <option value="24">Belize</option>  <option value="25">Benin</option>  <option value="26">Bermuda</option>  <option value="27">Bhutan</option>  <option value="28">Bolivia</option>
-	<option value="243">Bonaire, Sint Eustatius and Saba</option>  <option value="244">Bosnia and Herzegovina</option>  <option value="30">Botswana</option>  <option value="31">Bouvet Island</option>
-	<option value="32">Brazil</option>  <option value="245">British Indian Ocean Territory</option>  <option value="34">Brunei Darussalam</option>  <option value="35">Bulgaria</option>  <option value="36">Burkina Faso</option>
-	<option value="37">Burundi</option>  <option value="41">Cabo Verde</option>  <option value="38">Cambodia</option>  <option value="39">Cameroon</option>  <option value="1">Canada</option>
-	<option value="42">Cayman Islands</option>  <option value="247">Central African Republic</option>  <option value="44">Chad</option>  <option value="45">Chile</option>  <option value="46">China</option>
-	<option value="47">Christmas Island</option>	<option value="248">Cocos (Keeling) Islands</option>	<option value="49">Colombia</option>	<option value="50">Comoros</option>	<option value="51">Congo</option>
-	<option value="52">Congo, Democratic Republic of</option>	<option value="53">Cook Islands</option>	<option value="54">Costa Rica</option>	<option value="55">Côte d&#039;Ivoire</option>	
-	<option value="56">Croatia</option>	<option value="57">Cuba</option>	<option value="349">Curaçao</option>	<option value="58">Cyprus</option>	<option value="59">Czech Republic</option>
-	<option value="60">Denmark</option>	<option value="61">Djibouti</option>	<option value="62">Dominica</option>	<option value="63">Dominican Republic</option>	<option value="64">Ecuador</option>
-	<option value="65">Egypt</option>	<option value="66">El Salvador</option>	<option value="67">Equatorial Guinea</option>	<option value="68">Eritrea</option>	<option value="69">Estonia</option>
-	<option value="70">Ethiopia</option>	<option value="71">Falkland Islands</option>	<option value="72">Faroe Islands</option>	<option value="73">Fiji</option>	<option value="74">Finland</option>
-	<option value="75">France</option>	<option value="76">French Guiana</option>	<option value="77">French Polynesia</option>	<option value="350">French Southern Territories</option>	<option value="79">Gabon</option>
-	<option value="80">Gambia</option>	<option value="81">Georgia</option>	<option value="82">Germany</option>	<option value="83">Ghana</option>	<option value="84">Gibraltar</option>	<option value="85">Greece</option>
-	<option value="86">Greenland</option>	<option value="87">Grenada</option>	<option value="88">Guadeloupe</option>	<option value="89">Guam</option>	<option value="90">Guatemala</option>
-	<option value="351">Guernsey</option>	<option value="91">Guinea</option>	<option value="92">Guinea-Bissau</option>	<option value="93">Guyana</option>	<option value="94">Haiti</option>
-	<option value="352">Heard Island and McDonald Islands</option>	<option value="353">Holy See</option>	<option value="97">Honduras</option>	<option value="98">Hong Kong</option>	<option value="99">Hungary</option>
-	<option value="100">Iceland</option>	<option value="101">India</option>	<option value="102">Indonesia</option>	<option value="103">Iran</option>	<option value="104">Iraq</option>	<option value="105">Ireland</option>
-	<option value="354">Isle of Man</option>	<option value="106">Israel</option>	<option value="107">Italy</option>	<option value="108">Jamaica</option>	<option value="109">Japan</option>
-	<option value="355">Jersey</option>	<option value="110">Jordan</option>	<option value="111">Kazakhstan</option>	<option value="112">Kenya</option>	<option value="113">Kiribati</option>	<option value="114">Korea</option>
-	<option value="115">Korea, Republic of</option>	<option value="360">Kosovo, Republic of</option>	<option value="116">Kuwait</option>	<option value="117">Kyrgyzstan</option>	<option value="356">Laos</option>
-	<option value="119">Latvia</option>	<option value="120">Lebanon</option>	<option value="121">Lesotho</option>	<option value="122">Liberia</option>	<option value="357">Libya</option>
-	<option value="124">Liechtenstein</option>	<option value="125">Lithuania</option>	<option value="126">Luxembourg</option>	<option value="127">Macao</option>	<option value="128">Macedonia</option>
-	<option value="129">Madagascar</option>	<option value="130">Malawi</option>	<option value="131">Malaysia</option>	<option value="132">Maldives</option>	<option value="133">Mali</option>
-	<option value="134">Malta</option>	<option value="135">Marshall Islands</option>	<option value="136">Martinique</option>	<option value="137">Mauritania</option>	<option value="138">Mauritius</option>
-	<option value="139">Mayotte</option>	<option value="140">Mexico</option>	<option value="141">Micronesia</option>	<option value="142">Moldova, Republic of</option>	<option value="143">Monaco</option>
-	<option value="144">Mongolia</option>	<option value="358">Montenegro</option>	<option value="145">Montserrat</option>	<option value="146">Morocco</option>	<option value="147">Mozambique</option>
-	<option value="148">Myanmar</option>	<option value="149">Namibia</option>	<option value="150">Nauru</option>	<option value="151">Nepal</option>	<option value="152">Netherlands</option>
-	<option value="153">Netherlands Antilles</option>	<option value="154">New Caledonia</option>	<option value="155">New Zealand</option>	<option value="156">Nicaragua</option>	<option value="157">Niger</option>
-	<option value="158">Nigeria</option>	<option value="159">Niue</option>	<option value="160">Norfolk Island</option>	<option value="359">Northern Mariana Islands</option>	<option value="162">Norway</option>
-	<option value="163">Oman</option>	<option value="164">Pakistan</option>	<option value="165">Palau</option>	<option value="166">Palestine, State of</option>	<option value="167">Panama</option>
-	<option value="168">Papua New Guinea</option>	<option value="169">Paraguay</option>	<option value="170">Peru</option>	<option value="171">Philippines</option>	<option value="172">Pitcairn</option>
-	<option value="173">Poland</option>	<option value="174">Portugal</option>	<option value="175">Puerto Rico</option>	<option value="176">Qatar</option>	<option value="177">Reunion</option>
-	<option value="178">Romania</option>	<option value="179">Russian Federation</option>	<option value="180">Rwanda</option>	<option value="361">Saint Barthélemy</option>	<option value="181">Saint Helena</option>
-	<option value="182">Saint Kitts and Nevis</option>	<option value="183">Saint Lucia</option>	<option value="362">Saint Martin</option>	<option value="363">Saint Pierre and Miquelon</option>
-	<option value="185">Saint Vincent</option>	<option value="186">Samoa</option>	<option value="187">San Marino</option>	<option value="364">Sao Tome and Principe</option>	<option value="189">Saudi Arabia</option>
-	<option value="190">Senegal</option>	<option value="365">Serbia</option>	<option value="192">Seychelles</option>	<option value="193">Sierra Leone</option>	<option value="194">Singapore</option>
-	<option value="366">Sint Maarten</option>	<option value="195">Slovakia</option>	<option value="196">Slovenia</option>	<option value="197">Solomon Islands</option>	<option value="198">Somalia</option>
-	<option value="199">South Africa</option>	<option value="200">South Georgia</option>	<option value="367">South Sudan</option>	<option value="201">Spain</option>	<option value="202">Sri Lanka</option>
-	<option value="203">Sudan</option>	<option value="204">Suriname</option>	<option value="368">Svalbard and Jan Mayen</option>	<option value="206">Swaziland</option>	<option value="207">Sweden</option>
-	<option value="208">Switzerland</option>	<option value="209">Syrian Arab Republic</option>	<option value="210">Taiwan</option>	<option value="211">Tajikistan</option>	<option value="212">Tanzania</option>
-	<option value="213">Thailand</option>	<option value="214">Timor-Leste</option>	<option value="215">Togo</option>	<option value="216">Tokelau</option>	<option value="217">Tonga</option>
-	<option value="218">Trinidad and Tobago</option>	<option value="219">Tunisia</option>	<option value="220">Turkey</option>	<option value="221">Turkmenistan</option>	<option value="369">Turks and Caicos Islands</option>
-	<option value="223">Tuvalu</option>	<option value="224">Uganda</option>	<option value="225">Ukraine</option>	<option value="226">United Arab Emirates</option>	<option value="227">United Kingdom</option>
-	<option value="246">United States Minor Outlying Islands</option>	<option value="229">Uruguay</option>	<option value="230">Uzbekistan</option>
-	<option value="231">Vanuatu</option>	<option value="232">Venezuela</option>	<option value="233">Viet Nam</option>	<option value="234">Virgin Islands, British</option>	<option value="235">Virgin Islands, U.s.</option>
-	<option value="236">Wallis and Futuna</option>	<option value="237">Western Sahara</option>	<option value="238">Yemen</option>	<option value="239">Zambia</option>	<option value="240">Zimbabwe</option>
-			  
-            </select>
-          </div>
-        </div>
 	</form>
 	</div>
 	<center>
@@ -841,14 +707,56 @@ function updateCosts() {
 			<div class="header">
 				<h2>Virtual CFO Service Quote Criteria</h2>
 			</div>
-			
+			<table>
+			<col width="20%">
+			<col width="80%">
+			<tr>
+			<td class="absorbing-column">
 			<div class="item">
 				<div class="form2-item">
-					<label for="AnnualRev" style="text-align:left;"><b>Annual Revenue: <font color="red">*</font></b></label>
-					<input type="text" name="AnnualRev" id="AnnualRev" style="width: 150px;" onkeyup="updateCosts()" />
+					<label for="AnnualRev" style="text-align:left;"><b>Annual Revenue: <font color="red">*</font></b></label>				
+					<select name="AnnualRev" id="AnnualRev" autocomplete="off" onchange="updateCosts()" required>
+					<option value="RevRng0" selected>$0 - $99,999</option>
+					<option value="RevRng1">$100,000 - $299,999</option>
+					<option value="RevRng2">$300,000 - $599,999</option>
+					<option value="RevRng3">$600,000 - $899,999</option>
+					<option value="RevRng4">$900,000 - $1,199,999</option>
+					<option value="RevRng5">$1,200,000 - $1,499,000</option>
+					<option value="RevRng6">$1,500,000 - $1,799,999</option>
+					<option value="RevRng7">$1,800,000 - $2,099,999</option>
+					<option value="RevRng8">$2,100,000 - $2,499,999</option>
+					<option value="RevRng9">$2,500,000 - $2,999,999</option>
+					<option value="RevRng10">$3,000,000 - $3,499,999</option>
+					<option value="RevRng11">$3,500,000 - $3,999,999</option>
+					<option value="RevRng12">$4,000,000 - $4,499,999</option>
+					<option value="RevRng13">$4,500,000 - $4,999,999</option>
+					<option value="RevRng14">$5,000,000 - $5,999,999</option>
+					<option value="RevRng15">$6,000,000 - $6,999,999</option>
+					<option value="RevRng16">$7,000,000 - $7,999,999</option>
+					<option value="RevRng17">$8,000,000 - $8,999,999</option>
+					<option value="RevRng18">$9,000,000 - $9,999,999</option>
+					<option value="RevRng19">$10,000,000 - $12,499,999</option>
+					<option value="RevRng20">$12,500,000 - $14,999,999</option>
+					<option value="RevRng21">$15,000,000 - $17,499,999</option>
+					<option value="RevRng22">$17,500,000 - $19,999,999</option>
+					<option value="RevRng23">$20,000,000 - $22,499,999</option>
+					<option value="RevRng24">$22,500,000 - $24,999,999</option>
+					<option value="RevRng25">$25,000,000 - $27,499,999</option>
+					<option value="RevRng26">$27,500,000 - $29,999,999</option>
+					<option value="RevRng27">$30,000,000 - $32,499,999</option>
+					<option value="RevRng28">$32,500,000 - $34,999,999</option>
+					<option value="RevRng29">$35,000,000 - $37,499,999</option>
+					<option value="RevRng30">$37,500,000 - $39,999,999</option>
+					<option value="RevRng31">$40,000,000 - $42,499,999</option>
+					<option value="RevRng32">$42,500,000 - $44,999,999</option>
+					<option value="RevRng33">$45,000,000 - $47,499,999</option>
+					<option value="RevRng34">$47,500,000 - $49,999,999</option>
+					<option value="RevRng35">$50,000,000+</option>
+					</select>
 				</div>
 			</div>
-			
+			</td>
+			<td>
 			<div class="item">
 				<div class="form2-item">
 					<label for="ServiceType" style="text-align:left;"><b>Service Type: <font color="red">*</font></b></label>
@@ -860,14 +768,49 @@ function updateCosts() {
 				</div>
 			</div>
 			
+			</tr>
 			<br style="clear:both;" />
+			<tr>
 			
+			<td>
+			<div class="item">
+				<div class="form2-item">
+					<label for="SoftwareType" style="text-align:left;"><b>Accounting Software: <font color="red">*</font></b></label>
+					<select name="SoftwareType" id="SoftwareType" autocomplete="off" onchange="updateCosts()" required>
+					<option value="QBO" selected>QuickBooks Online</option>
+					<option value="QBD">QuickBooks Desktop</option>
+					<option value="Xero">Xero</option>
+					<option value="NetSuite">NetSuite</option>
+					<option value="Workamajig">Workamajig</option>
+					<option value="Sage">Sage</option>
+					<option value="GreatPlains">Great Plains</option>
+					<option value="Other">Other</option>
+					</select>
+				</div>
+			</div>
+			</td>
+			
+			<td>
 			<div class="item">
 				<div class="form2-item">
 					<label for="EmpCount" style="text-align:left;"><b>Number of Employees and/or Contractors: <font color="red">*</font></b></label>
-					<input type="text" name="EmpCount" id="EmpCount" style="width: 50%; float:left" onkeyup="updateCosts()" />
+					<select name="EmpCount" id="EmpCount" autocomplete="off" onchange="updateCosts()" style="width: 50%; float:left">
+					<option value="EmpRng0" selected>1 - 10</option>
+					<option value="EmpRng1">11 - 20</option>
+					<option value="EmpRng2">21 - 30</option>
+					<option value="EmpRng3">31 - 40</option>
+					<option value="EmpRng4">41 - 50</option>
+					<option value="EmpRng5">51 - 100</option>
+					<option value="EmpRng6">101 - 150</option>
+					<option value="EmpRng7">151 - 200</option>
+					<option value="EmpRng8">201 - 250</option>
+					<option value="EmpRng9">251+</option>
+					</select>					
 				</div>
 			</div>
+			</td>
+			</tr>
+			</table>
 			
 
 
@@ -897,8 +840,8 @@ function updateCosts() {
 						<td>Type of Financial Statements</td>
 						<td>
 							<select name="FinancialType" id="FinancialType" autocomplete="off" onchange="updateCosts()">
-							<option value="Standard" selected>Standard</option>
-							<option value="Classes">Standard with Classes</option>
+							<option value="Standard" selected>Single Entity</option>
+							<option value="Classes">Single Entity with Departments</option>
 							<option value="Multiple">Multiple Companies / Locations</option>
 							</select>
 						</td>
@@ -910,9 +853,21 @@ function updateCosts() {
 					
 					<tr>
 						<td>&emsp;Forecasting</td>
-						<td>Number of Forecasts</td>
+						<td>Number of Companies to be Forecasted</td>
 						<td>
-							<input type="text" name="FcstCount" id="FcstCount" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="FcstCount" id="FcstCount" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>
+							</select>							
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkFcstCount" value="chkFcstCount" onchange="updateCosts()">
@@ -945,7 +900,13 @@ function updateCosts() {
 						<td>&emsp;Payroll Administration</td>
 						<td>Does not include payroll processing</td>
 						<td>
-							&nbsp;
+							<select name="PayrollType" id="PayrollType" autocomplete="off" onchange="updateCosts()">
+							<option value="PayrollType0" selected>N/A</option>
+							<option value="PayrollType1">Weekly</option>
+							<option value="PayrollType2">Bi-Weekly</option>
+							<option value="PayrollType3">Semi-Monthly</option>
+							<option value="PayrollType4">Monthly</option>
+							</select>	
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkPayrollAdmin" value="chkPayrollAdmin" onchange="updateCosts()">
@@ -967,7 +928,7 @@ function updateCosts() {
 					
 					<tr>
 						<td>&emsp;Cash Flow Management</td>
-						<td>Weekly Cash Flow Meeting - 13 wk outlook</td>
+						<td>Weekly Cash Flow Meeting - 13 week outlook</td>
 						<td>
 							&nbsp;
 						</td>
@@ -981,7 +942,19 @@ function updateCosts() {
 						<td>&emsp;Bank Reconciliations</td>
 						<td>Enter number of Accounts to Reconcile</td>
 						<td>
-							<input type="text" name="BankRecs" id="BankRecs" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="BankRecs" id="BankRecs" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>
+							</select>								
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkBankRecs" value="chkBankRecs" onchange="updateCosts()">
@@ -993,7 +966,19 @@ function updateCosts() {
 						<td>&emsp;Credit Card Reconciliations</td>
 						<td>Enter number of Accounts to Reconcile</td>
 						<td>
-							<input type="text" name="CreditCardRecs" id="CreditCardRecs" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="CreditCardRecs" id="CreditCardRecs" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>
+							</select>								
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkCreditCardRecs" value="chkCreditCardRecs" onchange="updateCosts()">
@@ -1006,8 +991,8 @@ function updateCosts() {
 						<td>Paying Bills - Select range of transaction occurrence</td>
 						<td>
 							<select name="AccountsPayable" id="AccountsPayable" autocomplete="off" onchange="updateCosts()">
-							<option value="Low" selected>Low</option>
-							<option value="Medium">Medium</option>
+							<option value="Low">Low</option>
+							<option value="Medium" selected>Medium</option>
 							<option value="High">High</option>
 							</select>
 						</td>
@@ -1022,8 +1007,8 @@ function updateCosts() {
 						<td>Sending Invoices - Select range of transaction occurrence</td>
 						<td>
 							<select name="AccountsRecievable" id="AccountsRecievable" autocomplete="off" onchange="updateCosts()">
-							<option value="Low" selected>Low</option>
-							<option value="Medium">Medium</option>
+							<option value="Low">Low</option>
+							<option value="Medium" selected>Medium</option>
 							<option value="High">High</option>
 							</select>
 						</td>
@@ -1057,7 +1042,18 @@ function updateCosts() {
 						<td>&emsp;Individual Tax Return</td>
 						<td>Enter number of Owners/Partners</td>
 						<td>
-							<input type="text" name="IndividualTax" id="IndividualTax" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="IndividualTax" id="IndividualTax" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>							
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkIndividualTax" value="chkIndividualTax" onchange="updateCosts()">
@@ -1069,7 +1065,18 @@ function updateCosts() {
 						<td>&emsp;Multi-State Tax Return</td>
 						<td>Enter number of States</td>
 						<td>
-							<input type="text" name="MultiStateTax" id="MultiStateTax" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="MultiStateTax" id="MultiStateTax" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>							
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkMultiStateTax" value="chkMultiStateTax" onchange="updateCosts()">
@@ -1081,7 +1088,18 @@ function updateCosts() {
 						<td>&emsp;Sales Tax Return</td>
 						<td>Enter number of States</td>
 						<td>
-							<input type="text" name="SalesTax" id="SalesTax" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="SalesTax" id="SalesTax" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>							
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkSalesTax" value="chkSalesTax" onchange="updateCosts()">
@@ -1093,7 +1111,18 @@ function updateCosts() {
 						<td>&emsp;Personal Property Tax Return</td>
 						<td>Enter number of States</td>
 						<td>
-							<input type="text" name="PersonalPropertyTax" id="PersonalPropertyTax" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="PersonalPropertyTax" id="PersonalPropertyTax" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10+</option>							
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chkPersonalPropertyTax" value="chkPersonalPropertyTax" onchange="updateCosts()">
@@ -1105,7 +1134,18 @@ function updateCosts() {
 						<td>&emsp;1099 Filings</td>
 						<td>Enter number of 1099s to be filed</td>
 						<td>
-							<input type="text" name="1099Filings" id="1099Filings" style="width: 50px;" onkeyup="updateCosts()" />
+							<select name="1099Filings" id="1099Filings" style="width: 60px;" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>0</option>
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option value="40">40</option>
+							<option value="50">50</option>
+							<option value="60">60</option>
+							<option value="70">70</option>
+							<option value="80">80</option>
+							<option value="90">90</option>
+							<option value="100">100+</option>						
 						</td>
 						<td id="td2">
 							<input type="checkbox" class="addcart" name="chk1099Filings" value="chk1099Filings" onchange="updateCosts()">
