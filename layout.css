@@ -106,6 +106,30 @@ label {
 	display:block;
 }
 
+#divAcctFiles,#divDeptRep {
+	display: none
+}
+
+#divComp2,#divComp3,#divComp4,#divComp5 {
+	display: none
+}
+
+#divComp11,#divComp21,#divComp31,#divComp41,#divComp51 {
+	display: none
+}
+
+#divComp12,#divComp22,#divComp32,#divComp42,#divComp52 {
+	display: none
+}
+
+#divComp13,#divComp23,#divComp33,#divComp43,#divComp53 {
+	display: none
+}
+
+#divComp14,#divComp24,#divComp34,#divComp44,#divComp54 {
+	display: none
+}
+
 .btn-block {
     margin-top: 20px;
     text-align: center;
@@ -147,6 +171,11 @@ button:hover {
 		float: left;
 		margin: 0 10px 0 10px;
 	}
+	.form3-item {
+		float: left;
+		margin: 0 10px 0 10px;
+		vertical-align: middle;
+	}
 
 
 table {
@@ -180,6 +209,12 @@ td {
 	text-align: right;
 }
 
+#td4 {
+	padding: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+
 tr {
 	vertical-align: middle;
 }
@@ -195,6 +230,7 @@ tr {
 	text-align:left;
 	border-bottom: 1px solid #ddd;	
 }
+
 
 
 }
