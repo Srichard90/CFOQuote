@@ -27,6 +27,12 @@ h1 {
     padding: 3px;
 }
 
+ .spacing {
+
+	padding-left: 10px; 
+
+ }
+
 .innerbox {
     justify-content: center;
     align-items: center;
@@ -102,11 +108,37 @@ input[type="input"] {
     display: none;
 }
 
+input[type="radio"]{
+    vertical-align: baseline;
+}
+
 label {
 	display:block;
 }
 
+.labelRadio {
+	display:inline;
+}
+
+tr.border_bottom td {
+  border-bottom:1pt solid #dedede;
+}
+
+td.border_sq {
+  border-bottom:1pt solid #dedede;
+  border-left:1pt solid #dedede;
+}
+
+td.border_end {
+  border-bottom:1pt solid #dedede;
+  border-right:1pt solid #dedede;
+}
+
 #divAcctFiles,#divDeptRep {
+	display: none
+}
+
+#divPayrollProvider1,#divPayrollProvider2,#divPayrollProvider3,#divPayrollProvider4,#divPayrollProvider5 {
 	display: none
 }
 
@@ -127,6 +159,10 @@ label {
 }
 
 #divComp14,#divComp24,#divComp34,#divComp44,#divComp54 {
+	display: none
+}
+
+#divComp15,#divComp25,#divComp35,#divComp45,#divComp55 {
 	display: none
 }
 
@@ -176,7 +212,12 @@ button:hover {
 		margin: 0 10px 0 10px;
 		vertical-align: middle;
 	}
-
+	.form4-item {
+		display: block;
+		float: left;
+		margin: 0 10px 0 10px;
+		vertical-align: baseline;
+	}
 
 table {
 	width: 100%;
@@ -213,6 +254,12 @@ td {
 	padding: 0;
 	vertical-align: middle;
 	text-align: center;
+}
+
+#td5 {
+	padding: 0;
+	vertical-align: middle;
+	text-align: left;
 }
 
 tr {

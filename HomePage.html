@@ -1284,6 +1284,22 @@ function showHide(elem) {
 //Script to Show/Hide Divs
 var DeptChk = document.getElementById('QualDepartment').value;
 var NumComp = document.getElementById('NumComp').value;
+var PayrollChk = document.getElementById('PayrollType').value;
+
+	if (PayrollChk == 0) {
+		document.getElementById('divPayrollProvider1').style.display = 'none';
+		document.getElementById('divPayrollProvider2').style.display = 'none';
+		document.getElementById('divPayrollProvider3').style.display = 'none';
+		document.getElementById('divPayrollProvider4').style.display = 'none';
+		document.getElementById('divPayrollProvider5').style.display = 'none';
+	} else {
+		document.getElementById('divPayrollProvider1').style.display = 'block';
+		document.getElementById('divPayrollProvider2').style.display = 'block';
+		document.getElementById('divPayrollProvider3').style.display = 'block';
+		document.getElementById('divPayrollProvider4').style.display = 'block';
+		document.getElementById('divPayrollProvider5').style.display = 'block';
+	}
+	
 
 	if (NumComp == 0) {
 		document.getElementById('divAcctFiles').style.display = 'none';
@@ -1321,6 +1337,11 @@ var NumComp = document.getElementById('NumComp').value;
 		document.getElementById('divComp34').style.display = 'none';
 		document.getElementById('divComp44').style.display = 'none';
 		document.getElementById('divComp54').style.display = 'none';
+		
+		document.getElementById('divComp25').style.display = 'none';
+		document.getElementById('divComp35').style.display = 'none';
+		document.getElementById('divComp45').style.display = 'none';
+		document.getElementById('divComp55').style.display = 'none';
 	} else if (NumComp == 1) {
 		document.getElementById('divComp2').style.display = 'none';
 		document.getElementById('divComp3').style.display = 'none';
@@ -1346,6 +1367,11 @@ var NumComp = document.getElementById('NumComp').value;
 		document.getElementById('divComp34').style.display = 'none';
 		document.getElementById('divComp44').style.display = 'none';
 		document.getElementById('divComp54').style.display = 'none';
+		
+		document.getElementById('divComp25').style.display = 'none';
+		document.getElementById('divComp35').style.display = 'none';
+		document.getElementById('divComp45').style.display = 'none';
+		document.getElementById('divComp55').style.display = 'none';		
 	} else if (NumComp == 2) {
 		document.getElementById('divComp2').style.display = 'block';
 		document.getElementById('divComp3').style.display = 'none';
@@ -1371,6 +1397,11 @@ var NumComp = document.getElementById('NumComp').value;
 		document.getElementById('divComp34').style.display = 'none';
 		document.getElementById('divComp44').style.display = 'none';
 		document.getElementById('divComp54').style.display = 'none';
+		
+		document.getElementById('divComp25').style.display = 'block';
+		document.getElementById('divComp35').style.display = 'none';
+		document.getElementById('divComp45').style.display = 'none';
+		document.getElementById('divComp55').style.display = 'none';		
 	}	else if (NumComp == 3) {
 		document.getElementById('divComp2').style.display = 'block';
 		document.getElementById('divComp3').style.display = 'block';
@@ -1396,6 +1427,11 @@ var NumComp = document.getElementById('NumComp').value;
 		document.getElementById('divComp34').style.display = 'block';
 		document.getElementById('divComp44').style.display = 'none';
 		document.getElementById('divComp54').style.display = 'none';
+		
+		document.getElementById('divComp25').style.display = 'block';
+		document.getElementById('divComp35').style.display = 'block';
+		document.getElementById('divComp45').style.display = 'none';
+		document.getElementById('divComp55').style.display = 'none';		
 	}	else if (NumComp == 4) {
 		document.getElementById('divComp2').style.display = 'block';
 		document.getElementById('divComp3').style.display = 'block';
@@ -1421,6 +1457,11 @@ var NumComp = document.getElementById('NumComp').value;
 		document.getElementById('divComp34').style.display = 'block';
 		document.getElementById('divComp44').style.display = 'block';
 		document.getElementById('divComp54').style.display = 'none';
+		
+		document.getElementById('divComp25').style.display = 'block';
+		document.getElementById('divComp35').style.display = 'block';
+		document.getElementById('divComp45').style.display = 'block';
+		document.getElementById('divComp55').style.display = 'none';		
 	}	else if (NumComp == 5) {
 		document.getElementById('divComp2').style.display = 'block';
 		document.getElementById('divComp3').style.display = 'block';
@@ -1446,8 +1487,14 @@ var NumComp = document.getElementById('NumComp').value;
 		document.getElementById('divComp34').style.display = 'block';
 		document.getElementById('divComp44').style.display = 'block';
 		document.getElementById('divComp54').style.display = 'block';
+		
+		document.getElementById('divComp25').style.display = 'block';
+		document.getElementById('divComp35').style.display = 'block';
+		document.getElementById('divComp45').style.display = 'block';
+		document.getElementById('divComp55').style.display = 'block';		
 	}
 	
+
 	updateCosts();
 
 }
@@ -1499,14 +1546,43 @@ var NumComp = document.getElementById('NumComp').value;
 				<input type="text" name="website" id="website" placeholder="Company Website" onblur="clearFormat(this);" required />
 			</div>
 			<div class="form-item">
-
+			
+				<label for="industry"><b>Industry <font color="red">*</font></b></label>
+				<select name="industry" id="industry" autocomplete="off" onblur="clearFormat(this);" required>
+				<option value="0" selected>--Select--</option>
+				<option value="1">Accounting</option>
+				<option value="2">Finance, Insurance</option>
+				<option value="3">Food Service</option>
+				<option value="4">Health Care</option>
+				<option value="5">Information</option>
+				<option value="6">Manufacturing</option>
+				<option value="7">Real Estate, Renting, Leasing</option>
+				<option value="8">Retail Trade</option>
+				<option value="9">Wholesale Trade</option>
+				<option value="10">Other</option>
+				</select>
 			</div>
 		</div>
 
 		<br style="clear:both;" />
+		<br style="clear:both;" />
+		
+		<div class="selection-rng-item">
 
-	</form>
+				<label class="labelRadio" for="EmailOpt"><b>&nbsp;&nbsp;Preferred Method of Contact:&emsp;</b></label>
+				
+				<input type="radio" name="contactMethod" value="EmailOpt" checked>Email
+				&emsp;
+				<input type="radio" name="contactMethod" value="PhoneOpt">Phone
+
+		</div>
+		
+		
+	</form>		
+		
 	</div>
+
+	
 	<center>
 	<form name="QuoterCalc" id="QuoterCalc" action="#">
 		<div class="innerbox">
@@ -1541,11 +1617,9 @@ var NumComp = document.getElementById('NumComp').value;
 						<div class="form2-item">
 						<label for="VCFOQual" style="text-align:left;"><b>Please select desired featured services: <font color="red">*</font></b></label>
 						
-						<table>
-
-				
-					<tr>
-						<td>&emsp;Incentive Plans</td>
+					<table cellpadding="10"  style="border-top:double;">
+					<tr class="border_bottom">
+						<td class="border_sq">&emsp;Incentive Plans</td>
 						<td><div>
 							<select name="VCFOType1" id="VCFOType1" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
@@ -1553,22 +1627,17 @@ var NumComp = document.getElementById('NumComp').value;
 							</select>
 							</div>
 						</td>
-					</tr>				
 
-					
-					<tr>
-						<td>&emsp;Performance by Project</td>
+						<td class="border_sq">&emsp;Performance by Project</td>
 						<td>
 							<select name="VCFOType2" id="VCFOType2" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
 							</select>
 						</td>
-					</tr>
-					
-					<tr>
-						<td>&emsp;Team Member Performance</td>
-						<td>
+
+						<td class="border_sq">&emsp;Team Member Performance</td>
+						<td class="border_end">
 							<select name="VCFOType3" id="VCFOType3" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
@@ -1576,29 +1645,25 @@ var NumComp = document.getElementById('NumComp').value;
 						</td>
 					</tr>
 					
-					<tr>
-						<td>&emsp;Department Performance</td>
+					<tr class="border_bottom">
+						<td class="border_sq">&emsp;Department Performance</td>
 						<td>
 							<select name="VCFOType4" id="VCFOType4" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
 							</select>
 						</td>
-					</tr>
-					
-					<tr>
-						<td>&emsp;Customized Department Reports</td>
+
+						<td class="border_sq">&emsp;Customized Department Reports</td>
 						<td>
 							<select name="VCFOType5" id="VCFOType5" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
 							</select>
 						</td>
-					</tr>
-					
-					<tr>
-						<td>&emsp;Bank Relationships</td>
-						<td>
+
+						<td class="border_sq">&emsp;Bank Relationships</td>
+						<td class="border_end">
 							<select name="VCFOType6" id="VCFOType6" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
@@ -1606,24 +1671,27 @@ var NumComp = document.getElementById('NumComp').value;
 						</td>
 					</tr>
 					
-					<tr>
-						<td>&emsp;Ditrector Meetings</td>
+					<tr class="border_bottom">
+						<td class="border_sq">&emsp;Ditrector Meetings</td>
 						<td>
 							<select name="VCFOType7" id="VCFOType7" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
 							</select>
 						</td>
-					</tr>
-					
-					<tr>
-						<td>&emsp;Resource Planning</td>
+
+						<td class="border_sq">&emsp;Resource Planning</td>
 						<td>
 							<select name="VCFOType8" id="VCFOType8" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
 							<option value="1">Yes</option>
 							</select>
 						</td>
+
+						<td class="border_sq">&emsp;</td>
+						<td class="border_end">
+							&emsp;
+						</td>						
 					</tr>
 					
 					</table>
@@ -1648,6 +1716,7 @@ var NumComp = document.getElementById('NumComp').value;
 						</div></div></div>
 					</td>	
 				</tr>
+				
 				<tr> 
 					<td>
 						<div id="divAcctFiles">
@@ -1672,6 +1741,7 @@ var NumComp = document.getElementById('NumComp').value;
 						<th>Annual Revenue</th>
 						<th>Number of Employees</th>
 						<th>Accounting Software</th>
+						<th>Time Tracking Software</th>
 						<th>Forecast?</th>
 					</tr>
 					
@@ -1743,12 +1813,27 @@ var NumComp = document.getElementById('NumComp').value;
 						<option value="Workamajig">Workamajig</option>
 						<option value="Sage">Sage</option>
 						<option value="GreatPlains">Great Plains</option>
+						<option value="Freshbooks">Freshbooks</option>
 						<option value="Other">Other</option>
+						</select>
+					</td>
+
+					<td id="td4">
+						<select name="TimeTrackerType1" id="TimeTrackerType1" autocomplete="off" onchange="updateCosts()" style="width: 75%;">
+						<option value="Harvest" selected>Harvest</option>
+						<option value="10k">10,000 Ft</option>
+						<option value="Tsheets">TSheets</option>
+						<option value="Toggl">Toggl</option>
+						<option value="Workamajig">Workamajig</option>
+						<option value="Freshbooks">Freshbooks</option>
+						<option value="QuickBooks">QuickBooks</option>
+						<option value="BigTime">BigTime</option>
+						<option value="OtherTime">Other</option>
 						</select>
 					</td>
 					
 					<td id="td4">
-						<select name="FcstCount1" id="FcstCount1" autocomplete="off" onchange="updateCosts()" style="width: 50%;">
+						<select name="FcstCount1" id="FcstCount1" autocomplete="off" onchange="updateCosts()" style="width: 60%;">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 						</select>
@@ -1823,12 +1908,27 @@ var NumComp = document.getElementById('NumComp').value;
 						<option value="Workamajig">Workamajig</option>
 						<option value="Sage">Sage</option>
 						<option value="GreatPlains">Great Plains</option>
+						<option value="Freshbooks">Freshbooks</option>
 						<option value="Other">Other</option>
 						</select>
 					</div></td>
-					
+
 					<td id="td4"><div id="divComp24">
-						<select name="FcstCount2" id="FcstCount2" autocomplete="off" onchange="updateCosts()" style="width: 50%;">
+						<select name="TimeTrackerType2" id="TimeTrackerType2" autocomplete="off" onchange="updateCosts()" style="width: 75%;">
+						<option value="Harvest" selected>Harvest</option>
+						<option value="10k">10,000 Ft</option>
+						<option value="Tsheets">TSheets</option>
+						<option value="Toggl">Toggl</option>
+						<option value="Workamajig">Workamajig</option>
+						<option value="Freshbooks">Freshbooks</option>
+						<option value="QuickBooks">QuickBooks</option>
+						<option value="BigTime">BigTime</option>
+						<option value="OtherTime">Other</option>
+						</select>
+					</div></td>
+					
+					<td id="td4"><div id="divComp25">
+						<select name="FcstCount2" id="FcstCount2" autocomplete="off" onchange="updateCosts()" style="width: 60%;">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 						</select>
@@ -1903,12 +2003,27 @@ var NumComp = document.getElementById('NumComp').value;
 						<option value="Workamajig">Workamajig</option>
 						<option value="Sage">Sage</option>
 						<option value="GreatPlains">Great Plains</option>
+						<option value="Freshbooks">Freshbooks</option>
 						<option value="Other">Other</option>
 						</select>
 					</div></td>
-					
+
 					<td id="td4"><div id="divComp34">
-						<select name="FcstCount3" id="FcstCount3" autocomplete="off" onchange="updateCosts()" style="width: 50%;">
+						<select name="TimeTrackerType3" id="TimeTrackerType3" autocomplete="off" onchange="updateCosts()" style="width: 75%;">
+						<option value="Harvest" selected>Harvest</option>
+						<option value="10k">10,000 Ft</option>
+						<option value="Tsheets">TSheets</option>
+						<option value="Toggl">Toggl</option>
+						<option value="Workamajig">Workamajig</option>
+						<option value="Freshbooks">Freshbooks</option>
+						<option value="QuickBooks">QuickBooks</option>
+						<option value="BigTime">BigTime</option>
+						<option value="OtherTime">Other</option>
+						</select>
+					</div></td>
+					
+					<td id="td4"><div id="divComp35">
+						<select name="FcstCount3" id="FcstCount3" autocomplete="off" onchange="updateCosts()" style="width: 60%;">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 						</select>
@@ -1983,12 +2098,27 @@ var NumComp = document.getElementById('NumComp').value;
 						<option value="Workamajig">Workamajig</option>
 						<option value="Sage">Sage</option>
 						<option value="GreatPlains">Great Plains</option>
+						<option value="Freshbooks">Freshbooks</option>
 						<option value="Other">Other</option>
 						</select>
 					</div></td>
-					
+
 					<td id="td4"><div id="divComp44">
-						<select name="FcstCount4" id="FcstCount4" autocomplete="off" onchange="updateCosts()" style="width: 50%;">
+						<select name="TimeTrackerType4" id="TimeTrackerType4" autocomplete="off" onchange="updateCosts()" style="width: 75%;">
+						<option value="Harvest" selected>Harvest</option>
+						<option value="10k">10,000 Ft</option>
+						<option value="Tsheets">TSheets</option>
+						<option value="Toggl">Toggl</option>
+						<option value="Workamajig">Workamajig</option>
+						<option value="Freshbooks">Freshbooks</option>
+						<option value="QuickBooks">QuickBooks</option>
+						<option value="BigTime">BigTime</option>
+						<option value="OtherTime">Other</option>
+						</select>
+					</div></td>
+					
+					<td id="td4"><div id="divComp45">
+						<select name="FcstCount4" id="FcstCount4" autocomplete="off" onchange="updateCosts()" style="width: 60%;">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 						</select>
@@ -2062,12 +2192,27 @@ var NumComp = document.getElementById('NumComp').value;
 						<option value="Workamajig">Workamajig</option>
 						<option value="Sage">Sage</option>
 						<option value="GreatPlains">Great Plains</option>
+						<option value="Freshbooks">Freshbooks</option>
 						<option value="Other">Other</option>
 						</select>
 					</div></td>
-					
+
 					<td id="td4"><div id="divComp54">
-						<select name="FcstCount5" id="FcstCount5" autocomplete="off" onchange="updateCosts()" style="width: 50%;">
+						<select name="TimeTrackerType5" id="TimeTrackerType5" autocomplete="off" onchange="updateCosts()" style="width: 75%;">
+						<option value="Harvest" selected>Harvest</option>
+						<option value="10k">10,000 Ft</option>
+						<option value="Tsheets">TSheets</option>
+						<option value="Toggl">Toggl</option>
+						<option value="Workamajig">Workamajig</option>
+						<option value="Freshbooks">Freshbooks</option>
+						<option value="QuickBooks">QuickBooks</option>
+						<option value="BigTime">BigTime</option>
+						<option value="OtherTime">Other</option>
+						</select>
+					</div></td>
+					
+					<td id="td4"><div id="divComp55">
+						<select name="FcstCount5" id="FcstCount5" autocomplete="off" onchange="updateCosts()" style="width: 60%;">
 						<option value="1" selected>Yes</option>
 						<option value="0">No</option>
 						</select>
@@ -2113,7 +2258,7 @@ var NumComp = document.getElementById('NumComp').value;
 					
 					<tr>
 						<td>&emsp;Virtual CFO Services</td>
-						<td>Select from the below featured services</td>
+						<td>Select from the above featured services</td>
 						<td>
 							&nbsp;
 						</td>
@@ -2150,9 +2295,9 @@ var NumComp = document.getElementById('NumComp').value;
 					
 					<tr>
 						<td>&emsp;Payroll Administration</td>
-						<td>Does not include payroll processing</td>
+						<td>Does not include third-party payroll processor fee (i.e. ADP, Gusto, etc...)</td>
 						<td>
-							<select name="PayrollType" id="PayrollType" autocomplete="off" onchange="updateCosts()">
+							<select name="PayrollType" id="PayrollType" autocomplete="off" onchange="showHide(this)">
 							<option value="0" selected>No</option>
 							<option value="1">Weekly</option>
 							<option value="2">Bi-Weekly</option>
@@ -2167,8 +2312,34 @@ var NumComp = document.getElementById('NumComp').value;
 					</tr>
 					
 					<tr>
-						<td>&emsp;Employee Expense Tracking</td>
-						<td>&nbsp;</td>
+						<td id="td5"><div id="divPayrollProvider1">
+							&emsp;Payroll Processor
+						</div></td>
+						<td id="td5"><div id="divPayrollProvider2">
+							Please use the dropdown to select your Payroll Processor
+						</div></td>
+						<td id="td4"><div id="divPayrollProvider3">
+							<select name="PayrollProvider" id="PayrollProvider" autocomplete="off" onchange="updateCosts()">
+							<option value="0" selected>ADP</option>
+							<option value="1">Gusto</option>
+							<option value="2">Trinet</option>
+							<option value="3">JustWorks</option>
+							<option value="4">Paychex</option>
+							<option value="5">HomeBase</option>
+							<option value="6">Other</option>
+							</select>	
+						</div></td>
+						<td id="td4"><div id="divPayrollProvider4">
+							&nbsp;
+						</div></td>
+						<td id="td4"><div id="divPayrollProvider5">
+							&nbsp;
+						</div></td>
+					</tr>
+					
+					<tr>
+						<td>&emsp;Credit Card Receipt Tracking</td>
+						<td>Does not include third-party software (i.e. Expensify, Divvy, Concur, etc...)</td>
 						<td>
 							<select name="ExpTrackType" id="ExpTrackType" autocomplete="off" onchange="updateCosts()">
 							<option value="0" selected>No</option>
