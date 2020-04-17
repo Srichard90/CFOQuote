@@ -17,6 +17,7 @@ body, div, form, input, select, p {
 h1 {
 	margin: 15px 0;
     font-weight: 400;
+	vertical-align: middle;
 }
 
 .mainbox {
@@ -28,9 +29,7 @@ h1 {
 }
 
  .spacing {
-
 	padding-left: 10px; 
-
  }
 
 .innerbox {
@@ -108,8 +107,9 @@ input[type="input"] {
     display: none;
 }
 
-input[type="radio"]{
-    vertical-align: baseline;
+input[type="radio"] {
+  margin-top: -4px;
+  vertical-align: middle;
 }
 
 label {
@@ -171,14 +171,15 @@ td.border_end {
     text-align: center;
 }
 button {
-    width: 150px;
+    width: 200px;
+	height: 45px;
     padding: 10px;
     border: none;      
     -webkit-border-radius: 5px; 
     -moz-border-radius: 5px; 
     border-radius: 5px; 
     background-color: #095484;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
     cursor: pointer;
 }
@@ -216,7 +217,7 @@ button:hover {
 		display: block;
 		float: left;
 		margin: 0 10px 0 10px;
-		vertical-align: baseline;
+		vertical-align: middle;
 	}
 
 table {
